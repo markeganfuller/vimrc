@@ -49,12 +49,16 @@ Bundle 'sickill/vim-monokai'
 "---------------------------------
 
 " Colour Scheme Setup
-try
-    set t_Co=256
-    colorscheme Monokai
-catch /^Vim\%((\a\+)\)\=:E185/
+if $TERM != 'linux'
+    try
+        set t_Co=256
+        colorscheme Monokai
+    catch /^Vim\%((\a\+)\)\=:E185/
+        colorscheme pablo
+    endtry
+else
     colorscheme pablo
-endtry
+endif
 
 " Set Shell
 set shell=bash
