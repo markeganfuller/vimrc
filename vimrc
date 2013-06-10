@@ -34,6 +34,8 @@ Bundle 'HTML-AutoCloseTag'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 "Collab Editing
 Bundle 'FredKSchott/CoVim'
+"Conque Vim Term
+Bundle 'rosenfeld/conque-term'
 "------------SYNTAX
 "Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -156,7 +158,10 @@ let g:gist_post_private = 1
 let g:gist_show_privates = 1
 
 " -Python Mode
+" --Disable Folding
 let g:pymode_folding = 0
+" --Enable Pylint
+let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
 
 " -*ML Autoclose Tags
 au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
