@@ -1,56 +1,56 @@
-set nocompatible "Turn off compatiblity mode
-syntax on "Turn syntax highlighting on
-"Turn Filetype off until plugins have been loaded
-filetype off 
+set nocompatible " Turn off compatiblity mode
+filetype off " Turn Filetype off until plugins have been loaded
 
+"---------------------------------
 " Setup Vundle
+"---------------------------------
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" let Vundle manage Vundle
+" Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
+
 "---------------------------------
-"Bundles
+" Vundle Bundles
 "---------------------------------
-"NERDTree File Browser
+" NERDTree File Browser
 Bundle 'scrooloose/nerdtree'
- "Tab Mode
 Bundle 'jistr/vim-nerdtree-tabs'
-"Better % matching
+" Better % matching
 Bundle 'matchit.zip'
 " Tabuliser for => in puppet etc
 Bundle 'godlygeek/tabular'
-"Gist Integration
+" Gist Integration
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
-"Git Commands
+" Git Commands
 Bundle 'tpope/vim-fugitive.git'
-"Git Diff in Gutter
+" Git Diff in Gutter
 Bundle 'airblade/vim-gitgutter'
-"Python Indentation
+" Python Indentation
 Bundle 'klen/python-mode'
-"Auto Close HTML
+" Auto Close HTML
 Bundle 'HTML-AutoCloseTag'
-"Better Line Number Handling
+" Better Line Number Handling
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-"Collab Editing
-Bundle 'FredKSchott/CoVim'
-"Conque Vim Term
-Bundle 'rosenfeld/conque-term'
 "------------SYNTAX
-"Nagios Syntax
+" Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
-"Nginx Syntax
+" Nginx Syntax
 Bundle 'nginx.vim'
-"Puppet Syntax etc
+" Puppet Syntax etc
 Bundle 'markeganfuller/vim-puppet'
-"Wiki Syntax
+" Wiki Syntax
 Bundle 'wikipedia.vim'
 "------------COLOURSCHEME
-"Monokai Colorscheme
+" Monokai Colorscheme
 Bundle 'sickill/vim-monokai'
-"---------------------------------
 
+"---------------------------------
 " Colour Scheme Setup
+"---------------------------------
+" If its a not a tty1-7 term and
+" Monokai is installed use it
+" Else use pablo
 if $TERM != 'linux'
     try
         set t_Co=256
@@ -62,80 +62,43 @@ else
     colorscheme pablo
 endif
 
-" Set Shell
-set shell=bash
+syntax on "Turn syntax highlighting on
 
-" Set history to a big number
-set history=700
-" Auto read a file when its changed
-set autoread
+" Colour columns past 79 black
+highlight ColorColumn ctermbg=16 guibg=#000000
+execute "set colorcolumn=" . join(range(80,335), ',')
 
-" Enable filetype plugins
-filetype plugin indent on
-
-" UTF-8 !
-set encoding=utf-8
-set fileencoding=utf-8
-
-set vb "Visual Bell only
-set autoread " watch for file changes
-" Show Mode and Command in bar
-set showmode
-set showcmd
-
-" Search as you type
-set incsearch
-
-"Turn tabs into spaces
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+"---------------------------------
+" Editor Settings
+"---------------------------------
+set shell=bash " Set Shell
+set history=700 " Set history size
+set autoread " Auto read a file when its changed
+filetype plugin indent on " Enable filetype plugins
+set vb " Visual Bell only
 
 set autoindent "Follow last lines indent
 set nosmartindent "Not Smart, it unindents comments if set
 
-set wrapscan "Wrap searches
-
-set ruler
 set scrolloff=8 "Keep 8 lines either way
-set relativenumber "Turn line numbers on
 set cursorline "Highlight current line
 
-syntax on "Turn syntax highlighting on
-
-" Store swap files in fixed location, not current directory.
-if !isdirectory($HOME . "/.vimswap")
-    call mkdir($HOME . "/.vimswap")
-endif
-set dir=~/.vimswap//
-
-" Return to last edit position when opening files
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-" Remember info about open buffers on close
-set viminfo^=%
-
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+set incsearch " Search as you type
+set wrapscan "Wrap searches
 
 " Set splits to appear below or right
 set splitbelow
 set splitright
 
-" Set title of term window
-set title
+set title " Set title of term window
+
+" Show Mode and Command in bar
+set showmode
+set showcmd
 
 " Set Status Line
 set laststatus=2
-set statusline=%{$USER}@%{hostname()}\ %F\ [%{&syntax}]%r%m%=\|%c,\ %l\|\ %L
+set statusline=\|%c,\ %l\|%=%{$USER}@%{hostname()}\ %F\ [%{&syntax}]%r%m\|\ %L
 
 " Autoclose quickfix if last window
 au BufEnter * call MyLastWindow()
@@ -148,6 +111,40 @@ function! MyLastWindow()
     endif
   endif
 endfunction
+
+"---------------------------------
+" File Settings
+"---------------------------------
+set encoding=utf-8 " UTF-8
+set fileencoding=utf-8 " UTF-8
+
+" Turn tabs into spaces(4)
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Store swap files in fixed location, not current directory.
+if !isdirectory($HOME . "/.vimswap")
+    call mkdir($HOME . "/.vimswap")
+endif
+set dir=~/.vimswap//
+
+set viminfo^=% " Remember info about open buffers on close
+" Return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Delete trailing white space on save
+" Enabled for .py files
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
 
 "---------------------------------
 " Plugin Settings
@@ -165,6 +162,7 @@ let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
 
 " -*ML Autoclose Tags
 au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
+
 "---------------------------------
 " Keybindings
 "---------------------------------
