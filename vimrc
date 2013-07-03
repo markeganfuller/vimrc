@@ -76,6 +76,7 @@ set history=700 " Set history size
 set autoread " Auto read a file when its changed
 filetype plugin indent on " Enable filetype plugins
 set vb " Visual Bell only
+set modelines=5 "Fixes OSX not reading modelines
 
 set autoindent "Follow last lines indent
 set nosmartindent "Not Smart, it unindents comments if set
