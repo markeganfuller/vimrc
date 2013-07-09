@@ -127,6 +127,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" Disable that damn folding
+set nofoldenable
+
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
     call mkdir($HOME . "/.vimswap")
@@ -140,14 +143,8 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
-" Delete trailing white space on save
-" Enabled for .py files
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
+" Delete trailing whitespace on save
+autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "---------------------------------
 " Plugin Settings
@@ -162,6 +159,10 @@ let g:gist_show_privates = 1
 let g:pymode_folding = 0
 " --Enable Pylint
 let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
+" Additional python paths
+if system("uname") == "Darwin\n"
+    let g:pymode_paths = ['/Library/Python/2.7/site-packages/']
+endif
 
 " -*ML Autoclose Tags
 au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
@@ -191,6 +192,22 @@ nmap <Leader>ft :%s/\t/    /g<CR>
 nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
 nmap <Leader>nc :set colorcolumn=<CR>
 
+"-------------------Matching
+" Match Tabs and show as errors
+map <leader>mt :match Error /\t/<cr>
+
+" Match Whitespace and show as errors
+map <leader>mw :match Error /\s\+/<cr>
+
+" Clear Matches
+map <leader>mn :match NONE<cr>
+
+" Toggle Spell Checking
+map <leader>ss :setlocal spell!<cr>
+
+" Toggle Paste Mode
+map <leader>pp :setlocal paste!<cr>
+
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
 " Good for working in multiple terms
@@ -207,19 +224,6 @@ nmap <leader>ta :. w! >>~/.vimxfer<CR>
 vmap <leader>tw :w! ~/.vimxfer<CR>
 " Append
 vmap <leader>ta :w! >>~/.vimxfer<CR>
-
-"-------------------Matching
-" Match Tabs and show as errors
-map <leader>mt :match Error /[\t]/<cr>
-
-" Clear Matches
-map <leader>mn :match NONE<cr>
-
-" Toggle Spell Checking
-map <leader>ss :setlocal spell!<cr>
-
-" Toggle Paste Mode
-map <leader>pp :setlocal paste!<cr>
 
 "-------------------NERDTree
 nmap <F7> :NERDTreeTabsToggle<CR>
