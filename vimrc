@@ -64,9 +64,8 @@ endif
 
 syntax on "Turn syntax highlighting on
 
-" Colour columns past 79 black
+" Set Colour for column highlighting
 highlight ColorColumn ctermbg=16 guibg=#000000
-execute "set colorcolumn=" . join(range(80,335), ',')
 
 "---------------------------------
 " Editor Settings
@@ -78,11 +77,14 @@ filetype plugin indent on " Enable filetype plugins
 set vb " Visual Bell only
 set modelines=5 "Fixes OSX not reading modelines
 
+set guifont=Courier\ New:h15
+
 set autoindent "Follow last lines indent
 set nosmartindent "Not Smart, it unindents comments if set
 
 set scrolloff=8 "Keep 8 lines either way
 set cursorline "Highlight current line
+set number "Turn on line numbers
 
 set incsearch " Search as you type
 set wrapscan "Wrap searches
@@ -179,6 +181,15 @@ map <C-l> <C-W>l
 
 " Edit vimrc
 nmap <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
+" Reload vimrc
+nmap <Leader>lv :so $MYVIMRC<CR>
+
+" Fix Tab Indents (Tab -> 4 Space)
+nmap <Leader>ft :%s/\t/    /g<CR>
+
+" Colour Columns 80+
+nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
+nmap <Leader>nc :set colorcolumn=<CR>
 
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
