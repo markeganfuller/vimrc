@@ -76,6 +76,7 @@ set autoread " Auto read a file when its changed
 filetype plugin indent on " Enable filetype plugins
 set vb " Visual Bell only
 set modelines=5 "Fixes OSX not reading modelines
+set backspace=2 "Fix broken backspace
 
 set guifont=Courier\ New:h15
 
@@ -128,7 +129,7 @@ set softtabstop=4
 set shiftwidth=4
 
 " Disable that damn folding
-set nofoldenable
+"set nofoldenable
 
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
@@ -155,13 +156,20 @@ let g:gist_post_private = 1
 let g:gist_show_privates = 1
 
 " -Python Mode
+"let g:pymode = 1
 " --Disable Folding
 let g:pymode_folding = 0
 " --Enable Pylint
 let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
+
+" --Skip Some checks
+" ---W0621 Redefining name from outer scope
+" ---C0301 Line length from pylint (covered by pep8)
+let g:pymode_lint_ignore = "W0621,C0301"
+
 " Additional python paths
 if system("uname") == "Darwin\n"
-    let g:pymode_paths = ['/Library/Python/2.7/site-packages/']
+    let g:pymode_paths = ['/usr/local/python2.7/site-packages', '/Library/Python/2.7/site-packages/']
 endif
 
 " -*ML Autoclose Tags
@@ -182,11 +190,15 @@ map <C-l> <C-W>l
 
 " Edit vimrc
 nmap <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
+nmap <Leader>eb :tabnew<CR>:e ~/.bashrc<CR>
 " Reload vimrc
 nmap <Leader>lv :so $MYVIMRC<CR>
 
 " Fix Tab Indents (Tab -> 4 Space)
 nmap <Leader>ft :%s/\t/    /g<CR>
+
+" Insert a Space
+nmap <Leader><Space> :normal i <ESC>
 
 " Colour Columns 80+
 nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
