@@ -188,9 +188,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Edit vimrc
+" Remap [I
+nmap <Leader>q [I
+
+" Edit Various Files
 nmap <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 nmap <Leader>eb :tabnew<CR>:e ~/.bashrc<CR>
+nmap <Leader>et :tabnew<CR>:e ~/todo.txt<CR>
 " Reload vimrc
 nmap <Leader>lv :so $MYVIMRC<CR>
 
