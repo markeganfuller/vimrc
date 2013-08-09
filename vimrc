@@ -194,7 +194,11 @@ map <m-h> :tabprevious<CR>
 set <m-l>=l " Fix Alt
 map <m-l> :tabnext<CR>
 
-" Remap [I
+" Sessions
+map <Leader>sw :mksession ~/.mysession.vim<CR>
+map <Leader>sr :source ~/.mysession.vim<CR>
+
+" Remap [I (Search)
 nmap <Leader>q [I
 
 " Edit Various Files
