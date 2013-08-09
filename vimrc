@@ -188,6 +188,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Smart way to move between tabs
+set <m-h>=h " Fix Alt
+map <m-h> :tabprevious<CR>
+set <m-l>=l " Fix Alt
+map <m-l> :tabnext<CR>
+
 " Remap [I
 nmap <Leader>q [I
 
