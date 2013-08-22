@@ -213,6 +213,18 @@ map <F8> 8gt
 map <F9> 9gt
 map <F10> 10gt
 
+" Move Tab Hotkeys
+map <Leader><F1> :tabm 0<CR>
+map <Leader><F2> :tabm 1<CR>
+map <Leader><F3> :tabm 2<CR>
+map <Leader><F4> :tabm 3<CR>
+map <Leader><F5> :tabm 4<CR>
+map <Leader><F6> :tabm 5<CR>
+map <Leader><F7> :tabm 6<CR>
+map <Leader><F8> :tabm 7<CR>
+map <Leader><F9> :tabm 8<CR>
+map <Leader><F10> :tabm 9<CR>
+
 " Sessions
 map <Leader>sw :mksession! ~/.mysession.vim<CR>
 map <Leader>sr :source ~/.mysession.vim<CR>
