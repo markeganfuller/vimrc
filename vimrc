@@ -32,6 +32,8 @@ Bundle 'klen/python-mode'
 Bundle 'HTML-AutoCloseTag'
 " Better Line Number Handling
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+" filename:linenumber Handling
+Bundle 'bogado/file-line.git'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -188,14 +190,31 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Smart way to move between tabs
-set <m-h>=h " Fix Alt
-map <m-h> :tabprevious<CR>
-set <m-l>=l " Fix Alt
-map <m-l> :tabnext<CR>
+" Better window resizing
+" - Height
+map <Leader>= :resize +5<CR>
+map <Leader>- :resize -5<CR>
+" - Width (Shift)
+map <Leader>+ :vertical resize +5<CR>
+map <Leader>_ :vertical resize -5<CR>
+
+" Tab Hotkeys
+"Needed to stop vim help
+nmap <F1> 1gt
+
+map <F1> 1gt
+map <F2> 2gt
+map <F3> 3gt
+map <F4> 4gt
+map <F5> 5gt
+map <F6> 6gt
+map <F7> 7gt
+map <F8> 8gt
+map <F9> 9gt
+map <F10> 10gt
 
 " Sessions
-map <Leader>sw :mksession ~/.mysession.vim<CR>
+map <Leader>sw :mksession! ~/.mysession.vim<CR>
 map <Leader>sr :source ~/.mysession.vim<CR>
 
 " Remap [I (Search)
@@ -252,4 +271,4 @@ vmap <leader>tw :w! ~/.vimxfer<CR>
 vmap <leader>ta :w! >>~/.vimxfer<CR>
 
 "-------------------NERDTree
-nmap <F7> :NERDTreeTabsToggle<CR>
+map <Leader>tt :NERDTreeTabsToggle<CR>
