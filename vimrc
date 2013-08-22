@@ -130,6 +130,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+" Use Bash Higlighting not sh
+let g:is_bash = 1
+
 " Disable that damn folding
 "set nofoldenable
 
@@ -213,6 +216,18 @@ map <F8> 8gt
 map <F9> 9gt
 map <F10> 10gt
 
+" And for insert mode
+imap <F1> <Esc> 1gt
+imap <F2> <Esc> 2gt
+imap <F3> <Esc> 3gt
+imap <F4> <Esc> 4gt
+imap <F5> <Esc> 5gt
+imap <F6> <Esc> 6gt
+imap <F7> <Esc> 7gt
+imap <F8> <Esc> 8gt
+imap <F9> <Esc> 9gt
+imap <F10> <Esc>  10gt
+
 " Move Tab Hotkeys
 map <Leader><F1> :tabm 0<CR>
 map <Leader><F2> :tabm 1<CR>
@@ -224,6 +239,18 @@ map <Leader><F7> :tabm 6<CR>
 map <Leader><F8> :tabm 7<CR>
 map <Leader><F9> :tabm 8<CR>
 map <Leader><F10> :tabm 9<CR>
+
+" And for insert mode
+imap <Leader><F1> <Esc> :tabm 0<CR>
+imap <Leader><F2> <Esc> :tabm 1<CR>
+imap <Leader><F3> <Esc> :tabm 2<CR>
+imap <Leader><F4> <Esc> :tabm 3<CR>
+imap <Leader><F5> <Esc> :tabm 4<CR>
+imap <Leader><F6> <Esc> :tabm 5<CR>
+imap <Leader><F7> <Esc> :tabm 6<CR>
+imap <Leader><F8> <Esc> :tabm 7<CR>
+imap <Leader><F9> <Esc> :tabm 8<CR>
+imap <Leader><F10> <Esc> :tabm 9<CR>
 
 " Sessions
 map <Leader>sw :mksession! ~/.mysession.vim<CR>
