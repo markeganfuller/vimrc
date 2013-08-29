@@ -96,6 +96,10 @@ set wrapscan "Wrap searches
 set splitbelow
 set splitright
 
+" Enable Omnicompletion
+" <C-x><C-o>
+set omnifunc=syntaxcomplete#Complete
+
 set title " Set title of term window
 
 " Show Mode and Command in bar
