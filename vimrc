@@ -105,7 +105,7 @@ set showcmd
 
 " Set Status Line
 set laststatus=2
-set statusline=\|%c,\ %l\|%=%{$USER}@%{hostname()}\ %F\ [%{&syntax}]%r%m\|\ %L
+set statusline=\>\ %c:%l\[%L\][%{&syntax}]%r%m%=%{$USER}@%{hostname()}\ %F\ \<
 
 " Autoclose quickfix if last window
 au BufEnter * call MyLastWindow()
