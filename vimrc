@@ -30,8 +30,6 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'klen/python-mode'
 " Auto Close HTML
 Bundle 'HTML-AutoCloseTag'
-" Better Line Number Handling
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 " filename:linenumber Handling
 Bundle 'bogado/file-line.git'
 "------------SYNTAX
@@ -64,7 +62,7 @@ else
     colorscheme pablo
 endif
 
-syntax on "Turn syntax highlighting on
+syntax on " Turn syntax highlighting on
 
 " Set Colour for column highlighting
 highlight ColorColumn ctermbg=16 guibg=#000000
@@ -77,20 +75,19 @@ set history=700 " Set history size
 set autoread " Auto read a file when its changed
 filetype plugin indent on " Enable filetype plugins
 set vb " Visual Bell only
-set modelines=5 "Fixes OSX not reading modelines
-set backspace=2 "Fix broken backspace
+set modelines=5 " Fixes OSX not reading modelines
+set backspace=2 " Fix broken backspace
 
-set guifont=Courier\ New:h15
+set autoindent " Follow last lines indent
+set nosmartindent " Not Smart, it unindents comments if set
 
-set autoindent "Follow last lines indent
-set nosmartindent "Not Smart, it unindents comments if set
-
-set scrolloff=8 "Keep 8 lines either way
-set cursorline "Highlight current line
-set number "Turn on line numbers
+set scrolloff=8 " Keep 8 lines either way
+set cursorline " Highlight current line
+set number " Turn on line numbers
+set relativenumber " Turn on relative line numbers
 
 set incsearch " Search as you type
-set wrapscan "Wrap searches
+set wrapscan " Wrap searches
 
 " Set splits to appear below or right
 set splitbelow
@@ -137,9 +134,6 @@ set shiftwidth=4
 " Use Bash Higlighting not sh
 let g:is_bash = 1
 
-" Disable that damn folding
-"set nofoldenable
-
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
     call mkdir($HOME . "/.vimswap")
@@ -164,9 +158,7 @@ autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
 let g:gist_post_private = 1
 let g:gist_show_privates = 1
 
-" -Python Mode
-"let g:pymode = 1
-" --Disable Folding
+" --Disable Pymode Folding
 let g:pymode_folding = 0
 " --Enable Pylint
 let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
@@ -176,7 +168,7 @@ let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
 " ---C0301 Line length from pylint (covered by pep8)
 let g:pymode_lint_ignore = "W0621,C0301"
 
-" Additional python paths
+" Additional python paths for OSX
 if system("uname") == "Darwin\n"
     let g:pymode_paths = ['/usr/local/python2.7/site-packages', '/Library/Python/2.7/site-packages/']
 endif
@@ -230,7 +222,7 @@ imap <F6> <Esc> 6gt
 imap <F7> <Esc> 7gt
 imap <F8> <Esc> 8gt
 imap <F9> <Esc> 9gt
-imap <F10> <Esc>  10gt
+imap <F10> <Esc> 10gt
 
 " Move Tab Hotkeys
 map <Leader><F1> :tabm 0<CR>
@@ -263,6 +255,10 @@ map <Leader>sr :source ~/.mysession.vim<CR>
 " Remap [I (Search)
 nmap <Leader>q [I
 
+" Fix *# direction
+nnoremap # *
+nnoremap * #
+
 " Edit Various Files
 nmap <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 nmap <Leader>eb :tabnew<CR>:e ~/.bashrc<CR>
@@ -280,38 +276,44 @@ nmap <Leader><Space> :normal i <ESC>
 nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
 nmap <Leader>nc :set colorcolumn=<CR>
 
+
 "-------------------Matching
 " Match Tabs and show as errors
-map <leader>mt :match Error /\t/<cr>
+map <Leader>mt :match Error /\t/<cr>
 
 " Match Whitespace and show as errors
-map <leader>mw :match Error /\s\+/<cr>
+map <Leader>mw :match Error /\s\+/<cr>
 
 " Clear Matches
-map <leader>mn :match NONE<cr>
+map <Leader>mn :match NONE<cr>
 
 " Toggle Spell Checking
-map <leader>ss :setlocal spell!<cr>
+map <Leader>ss :setlocal spell!<cr>
 
 " Toggle Paste Mode
-map <leader>pp :setlocal paste!<cr>
+map <Leader>pp :setlocal paste!<cr>
+
+" Toggle Line Numbers
+map <Leader>nn :set number!<CR> :set relativenumber!<CR>
 
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
 " Good for working in multiple terms
 " NORMAL MODE (Uses current line)
 " Write
-nmap <leader>tw :. w! ~/.vimxfer<CR>
+nmap <Leader>tw :. w! ~/.vimxfer<CR>
 " Read
-nmap <leader>tr :r ~/.vimxfer<CR>
+nmap <Leader>tr :r ~/.vimxfer<CR>
 " Append
-nmap <leader>ta :. w! >>~/.vimxfer<CR>
+nmap <Leader>ta :. w! >>~/.vimxfer<CR>
 
 " VISUAL MODE (Uses current selection)
 " Write
-vmap <leader>tw :w! ~/.vimxfer<CR>
+vmap <Leader>tw :w! ~/.vimxfer<CR>
 " Append
-vmap <leader>ta :w! >>~/.vimxfer<CR>
+vmap <Leader>ta :w! >>~/.vimxfer<CR>
 
 "-------------------NERDTree
 map <Leader>tt :NERDTreeTabsToggle<CR>
+"-------------------Gitgutter
+map <Leader>gg :GitGutterToggle<CR>
