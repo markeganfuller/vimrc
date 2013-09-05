@@ -57,6 +57,7 @@ if $TERM != 'linux'
         colorscheme Monokai
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
+        set bg=dark
     endtry
 else
     colorscheme pablo
@@ -66,6 +67,8 @@ syntax on " Turn syntax highlighting on
 
 " Set Colour for column highlighting
 highlight ColorColumn ctermbg=16 guibg=#000000
+" Set Highlight for search
+highlight Search ctermbg=Yellow ctermfg=Black
 
 "---------------------------------
 " Editor Settings
@@ -87,11 +90,16 @@ set number " Turn on line numbers
 set relativenumber " Turn on relative line numbers
 
 set incsearch " Search as you type
+set hlsearch " Highlight search
 set wrapscan " Wrap searches
 
 " Set splits to appear below or right
 set splitbelow
 set splitright
+
+" Allow buffers to be hidden without saving
+set hidden
+set switchbuf=useopen,split
 
 " Enable Omnicompletion
 " <C-x><C-o>
@@ -105,7 +113,7 @@ set showcmd
 
 " Set Status Line
 set laststatus=2
-set statusline=\>\ %c:%l\[%L\][%{&syntax}]%r%m%=%{$USER}@%{hostname()}\ %F\ \<
+set statusline=\|\ %c:%l\[%L\][%{&syntax}]%r%m%<%=%{$USER}@%{hostname()}\ %F\ \|
 
 " Autoclose quickfix if last window
 au BufEnter * call MyLastWindow()
@@ -197,6 +205,12 @@ map <Leader>- :resize -5<CR>
 map <Leader>+ :vertical resize +5<CR>
 map <Leader>_ :vertical resize -5<CR>
 
+" Switch Buffer
+map <Leader>ss <Esc>:sb<space>
+
+" List Buffers
+map <Leader>ll <Esc>:ls<CR>
+
 " Tab Hotkeys
 "Needed to stop vim help
 nmap <F1> 1gt
@@ -252,12 +266,22 @@ imap <Leader><F10> <Esc> :tabm 9<CR>
 map <Leader>sw :mksession! ~/.mysession.vim<CR>
 map <Leader>sr :source ~/.mysession.vim<CR>
 
-" Remap [I (Search)
-nmap <Leader>q [I
+" Clear search highlighting
+nnoremap <c-l> :noh<CR><c-l>
 
-" Fix *# direction
+" Fix *# direction (search for w)
 nnoremap # *
 nnoremap * #
+
+" Fix CTRL-o/i direction (move in jump list)
+nnoremap <C-o> <C-i>
+nnoremap <C-i> <C-o>
+
+" Remap [I (Search)
+nmap <Leader>qq [I
+
+" Search in windows
+nmap <Leader>qw :windo /<C-r><C-w><CR><Bar><i>
 
 " Edit Various Files
 nmap <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
@@ -288,7 +312,7 @@ map <Leader>mw :match Error /\s\+/<cr>
 map <Leader>mn :match NONE<cr>
 
 " Toggle Spell Checking
-map <Leader>ss :setlocal spell!<cr>
+map <Leader>sp :setlocal spell!<cr>
 
 " Toggle Paste Mode
 map <Leader>pp :setlocal paste!<cr>
