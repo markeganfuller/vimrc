@@ -32,6 +32,8 @@ Bundle 'klen/python-mode'
 Bundle 'HTML-AutoCloseTag'
 " filename:linenumber Handling
 Bundle 'bogado/file-line.git'
+" Startify, make that start screen useful
+Bundle 'mhinz/vim-startify'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -44,7 +46,6 @@ Bundle 'wikipedia.vim'
 "------------COLOURSCHEME
 " Monokai Colorscheme
 Bundle 'sickill/vim-monokai'
-
 "---------------------------------
 " Colour Scheme Setup
 "---------------------------------
@@ -67,8 +68,13 @@ syntax on " Turn syntax highlighting on
 
 " Set Colour for column highlighting
 highlight ColorColumn ctermbg=16 guibg=#000000
+
 " Set Highlight for search
-highlight Search ctermbg=Yellow ctermfg=Black
+highlight Search ctermbg=186 ctermfg=235
+
+" Startify Colors
+highlight StartifyBracket ctermfg=197
+highlight StartifyFile ctermfg=141
 
 "---------------------------------
 " Editor Settings
@@ -184,6 +190,10 @@ endif
 " -*ML Autoclose Tags
 au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
 
+" -Startify
+let g:startify_list_order = ['dir', 'files']
+let g:startify_custom_header = []
+
 "---------------------------------
 " Keybindings
 "---------------------------------
@@ -192,10 +202,10 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <Leader>jj <C-W>j
+map <Leader>kk <C-W>k
+map <Leader>hh <C-W>h
+map <Leader>ll <C-W>l
 
 " Better window resizing
 " - Height
@@ -209,7 +219,7 @@ map <Leader>_ :vertical resize -5<CR>
 map <Leader>ss <Esc>:sb<space>
 
 " List Buffers
-map <Leader>ll <Esc>:ls<CR>
+map <Leader>ls <Esc>:ls<CR>
 
 " Tab Hotkeys
 "Needed to stop vim help
