@@ -28,8 +28,6 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'airblade/vim-gitgutter'
 " Python Indentation
 Bundle 'klen/python-mode'
-" Auto Close HTML
-Bundle 'HTML-AutoCloseTag'
 " filename:linenumber Handling
 Bundle 'bogado/file-line.git'
 " Startify, make that start screen useful
@@ -197,9 +195,10 @@ let g:startify_custom_header = []
 "---------------------------------
 " Keybindings
 "---------------------------------
-" With a map leader it's possible to do extra key combinations
+" Map Leader to two keys
 let mapleader = ","
 let g:mapleader = ","
+nmap \ ,
 
 " Smart way to move between windows
 map <Leader>jj <C-W>j
