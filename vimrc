@@ -15,8 +15,6 @@ Bundle 'gmarik/vundle'
 " NERDTree File Browser
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-" Better % matching
-Bundle 'matchit.zip'
 " Tabuliser for => in puppet etc
 Bundle 'godlygeek/tabular'
 " Gist Integration
@@ -28,12 +26,10 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'airblade/vim-gitgutter'
 " Python Indentation
 Bundle 'klen/python-mode'
-" filename:linenumber Handling
-Bundle 'bogado/file-line.git'
-" Startify, make that start screen useful
-Bundle 'mhinz/vim-startify'
 " Buffer Line
 Bundle 'bling/vim-bufferline'
+" CTRL P
+Bundle 'kien/ctrlp.vim'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
