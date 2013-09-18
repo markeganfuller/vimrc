@@ -32,6 +32,8 @@ Bundle 'klen/python-mode'
 Bundle 'bogado/file-line.git'
 " Startify, make that start screen useful
 Bundle 'mhinz/vim-startify'
+" Buffer Line
+Bundle 'bling/vim-bufferline'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -63,6 +65,16 @@ else
 endif
 
 syntax on " Turn syntax highlighting on
+
+" Set line number and sign coloum to have normal bg
+highlight LineNr ctermbg=None guibg=None
+highlight SignColumn ctermbg=None guibg=None
+" Set current line number to have cursor column background
+highlight CursorLineNr ctermbg=237 guibg=#3c3d37
+
+" Status Line
+highlight StatusLine ctermfg=16 guifg=#000000
+highlight StatusLineNC ctermfg=16 guifg=#000000
 
 " Set Colour for column highlighting
 highlight ColorColumn ctermbg=16 guibg=#000000
@@ -309,7 +321,10 @@ nmap <Leader><Space> :normal i <ESC>
 nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
 nmap <Leader>nc :set colorcolumn=<CR>
 
-
+" Show Syntax Element Under Cursor
+map <Leader>sn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 "-------------------Matching
 " Match Tabs and show as errors
 map <Leader>mt :match Error /\t/<cr>
