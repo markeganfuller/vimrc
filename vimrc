@@ -42,6 +42,8 @@ Bundle 'wikipedia.vim'
 "------------COLOURSCHEME
 " Monokai Colorscheme
 Bundle 'sickill/vim-monokai'
+" Sorcerer Colorscheme
+Bundle 'vim-scripts/Sorcerer'
 "---------------------------------
 " Colour Scheme Setup
 "---------------------------------
@@ -51,7 +53,8 @@ Bundle 'sickill/vim-monokai'
 if $TERM != 'linux'
     try
         set t_Co=256
-        colorscheme Monokai
+        "colorscheme Monokai
+        colorscheme Sorcerer
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
         set bg=dark
@@ -65,6 +68,7 @@ syntax on " Turn syntax highlighting on
 " Set line number and sign coloum to have normal bg
 highlight LineNr ctermbg=None guibg=None
 highlight SignColumn ctermbg=None guibg=None
+highlight CursorLine ctermfg=None guibg=None
 " Set current line number to have cursor column background
 highlight CursorLineNr ctermbg=237 guibg=#3c3d37
 
