@@ -86,6 +86,8 @@ highlight Search ctermbg=186 ctermfg=235
 highlight StartifyBracket ctermfg=197
 highlight StartifyFile ctermfg=141
 
+
+
 "---------------------------------
 " Editor Settings
 "---------------------------------
@@ -116,6 +118,9 @@ set splitright
 " Allow buffers to be hidden without saving
 set hidden
 set switchbuf=useopen,split
+
+" Auto Change CWD to file dir
+set autochdir
 
 " Enable Omnicompletion
 " <C-x><C-o>
@@ -212,11 +217,8 @@ let mapleader = ","
 let g:mapleader = ","
 nmap \ ,
 
-" Smart way to move between windows
-map <Leader>jj <C-W>j
-map <Leader>kk <C-W>k
-map <Leader>hh <C-W>h
-map <Leader>ll <C-W>l
+" List Buffers
+map <Leader>ll :ls<CR>
 
 " Better window resizing
 " - Height
@@ -226,62 +228,62 @@ map <Leader>- :resize -5<CR>
 map <Leader>+ :vertical resize +5<CR>
 map <Leader>_ :vertical resize -5<CR>
 
-" Switch Buffer
+" Splib Buffer
 map <Leader>ss <Esc>:sb<space>
 
 " List Buffers
 map <Leader>ls <Esc>:ls<CR>
 
-" Tab Hotkeys
+" Buffer Hotkeys
 "Needed to stop vim help
-nmap <F1> 1gt
+nmap <F1> :b1<CR>
 
-map <F1> 1gt
-map <F2> 2gt
-map <F3> 3gt
-map <F4> 4gt
-map <F5> 5gt
-map <F6> 6gt
-map <F7> 7gt
-map <F8> 8gt
-map <F9> 9gt
-map <F10> 10gt
-
-" And for insert mode
-imap <F1> <Esc> 1gt
-imap <F2> <Esc> 2gt
-imap <F3> <Esc> 3gt
-imap <F4> <Esc> 4gt
-imap <F5> <Esc> 5gt
-imap <F6> <Esc> 6gt
-imap <F7> <Esc> 7gt
-imap <F8> <Esc> 8gt
-imap <F9> <Esc> 9gt
-imap <F10> <Esc> 10gt
-
-" Move Tab Hotkeys
-map <Leader><F1> :tabm 0<CR>
-map <Leader><F2> :tabm 1<CR>
-map <Leader><F3> :tabm 2<CR>
-map <Leader><F4> :tabm 3<CR>
-map <Leader><F5> :tabm 4<CR>
-map <Leader><F6> :tabm 5<CR>
-map <Leader><F7> :tabm 6<CR>
-map <Leader><F8> :tabm 7<CR>
-map <Leader><F9> :tabm 8<CR>
-map <Leader><F10> :tabm 9<CR>
+map <F1> :b1<CR>
+map <F2> :b2<CR>
+map <F3> :b3<CR>
+map <F4> :b4<CR>
+map <F5> :b5<CR>
+map <F6> :b6<CR>
+map <F7> :b7<CR>
+map <F8> :b8<CR>
+map <F9> :b9<CR>
+map <F10> :b10<CR>
 
 " And for insert mode
-imap <Leader><F1> <Esc> :tabm 0<CR>
-imap <Leader><F2> <Esc> :tabm 1<CR>
-imap <Leader><F3> <Esc> :tabm 2<CR>
-imap <Leader><F4> <Esc> :tabm 3<CR>
-imap <Leader><F5> <Esc> :tabm 4<CR>
-imap <Leader><F6> <Esc> :tabm 5<CR>
-imap <Leader><F7> <Esc> :tabm 6<CR>
-imap <Leader><F8> <Esc> :tabm 7<CR>
-imap <Leader><F9> <Esc> :tabm 8<CR>
-imap <Leader><F10> <Esc> :tabm 9<CR>
+imap <F1> <Esc> :b1<CR>
+imap <F2> <Esc> :b2<CR>
+imap <F3> <Esc> :b3<CR>
+imap <F4> <Esc> :b4<CR>
+imap <F5> <Esc> :b5<CR>
+imap <F6> <Esc> :b6<CR>
+imap <F7> <Esc> :b7<CR>
+imap <F8> <Esc> :b8<CR>
+imap <F9> <Esc> :b9<CR>
+imap <F10> <Esc> :b10<CR>
+
+" Tab Hotkeys
+map <Leader><F1> :tab 1<CR>
+map <Leader><F2> :tab 2<CR>
+map <Leader><F3> :tab 3<CR>
+map <Leader><F4> :tab 4<CR>
+map <Leader><F5> :tab 5<CR>
+map <Leader><F6> :tab 6<CR>
+map <Leader><F7> :tab 7<CR>
+map <Leader><F8> :tab 8<CR>
+map <Leader><F9> :tab 9<CR>
+map <Leader><F10> :tab 10<CR>
+
+" And for insert mode
+imap <Leader><F1> <Esc> :tab 1<CR>
+imap <Leader><F2> <Esc> :tab 2<CR>
+imap <Leader><F3> <Esc> :tab 3<CR>
+imap <Leader><F4> <Esc> :tab 4<CR>
+imap <Leader><F5> <Esc> :tab 5<CR>
+imap <Leader><F6> <Esc> :tab 6<CR>
+imap <Leader><F7> <Esc> :tab 7<CR>
+imap <Leader><F8> <Esc> :tab 8<CR>
+imap <Leader><F9> <Esc> :tab 9<CR>
+imap <Leader><F10> <Esc> :tab 10<CR>
 
 " Sessions
 map <Leader>sw :mksession! ~/.mysession.vim<CR>
@@ -305,9 +307,9 @@ nmap <Leader>qq [I
 nmap <Leader>qw :windo /<C-r><C-w><CR><Bar><i>
 
 " Edit Various Files
-nmap <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
-nmap <Leader>eb :tabnew<CR>:e ~/.bashrc<CR>
-nmap <Leader>et :tabnew<CR>:e ~/todo.txt<CR>
+nmap <Leader>ev :tabnew<CR>:cd ~/repos/mine/dotfiles/vimrc<bar>:e vimrc<CR>
+nmap <Leader>eb :tabnew<CR>:cd ~/repos/mine/dotfiles/bashrc<bar>:e bashrc<CR>
+nmap <Leader>et :e ~/todo.txt<CR>
 " Reload vimrc
 nmap <Leader>lv :so $MYVIMRC<CR>
 
