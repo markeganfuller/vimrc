@@ -159,6 +159,7 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set shiftround " Round > indents to sw
 
 " Use Bash Higlighting not sh
 let g:is_bash = 1
