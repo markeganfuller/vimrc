@@ -54,7 +54,7 @@ if $TERM != 'linux'
     try
         set t_Co=256
         "colorscheme Monokai
-        colorscheme Sorcerer
+        colorscheme sorcerer
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
         set bg=dark
