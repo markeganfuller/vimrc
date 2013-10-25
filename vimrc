@@ -1,5 +1,5 @@
-set nocompatible " Turn off compatiblity mode
-filetype off " Turn Filetype off until plugins have been loaded
+set nocompatible  " Turn off compatiblity mode
+filetype off      " Turn Filetype off until plugins have been loaded
 
 "---------------------------------
 " Setup Vundle
@@ -12,9 +12,6 @@ Bundle 'gmarik/vundle'
 "---------------------------------
 " Vundle Bundles
 "---------------------------------
-" NERDTree File Browser
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
 " Tabuliser for => in puppet etc
 Bundle 'godlygeek/tabular'
 " Gist Integration
@@ -48,7 +45,7 @@ Bundle 'vim-scripts/Sorcerer'
 " Colour Scheme Setup
 "---------------------------------
 " If its a not a tty1-7 term and
-" Monokai is installed use it
+" a preferred cs is installed use it
 " Else use pablo
 if $TERM != 'linux'
     try
@@ -82,11 +79,6 @@ highlight ColorColumn ctermbg=16 guibg=#000000
 " Set Highlight for search
 highlight Search ctermbg=186 ctermfg=235
 
-" Startify Colors
-highlight StartifyBracket ctermfg=197
-highlight StartifyFile ctermfg=141
-
-
 
 "---------------------------------
 " Editor Settings
@@ -97,10 +89,10 @@ set autoread " Auto read a file when its changed
 filetype plugin indent on " Enable filetype plugins
 set vb " Visual Bell only
 set modelines=5 " Fixes OSX not reading modelines
-set backspace=2 " Fix broken backspace
+set backspace=2 " Improve backspace
 
 set autoindent " Follow last lines indent
-set nosmartindent " Not Smart, it unindents comments if set
+set nosmartindent " Not Smart
 
 set scrolloff=8 " Keep 8 lines either way
 set cursorline " Highlight current line
@@ -205,9 +197,6 @@ endif
 " -*ML Autoclose Tags
 au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
 
-" -Startify
-let g:startify_list_order = ['dir', 'files']
-let g:startify_custom_header = []
 
 "---------------------------------
 " Keybindings
@@ -228,14 +217,14 @@ map <Leader>- :resize -5<CR>
 map <Leader>+ :vertical resize +5<CR>
 map <Leader>_ :vertical resize -5<CR>
 
-" Splib Buffer
+" Split Buffer
 map <Leader>ss <Esc>:sb<space>
 
 " List Buffers
 map <Leader>ls <Esc>:ls<CR>
 
 " Buffer Hotkeys
-"Needed to stop vim help
+" Needed to stop vim help
 nmap <F1> :b1<CR>
 
 map <F1> :b1<CR>
