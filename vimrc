@@ -140,11 +140,18 @@ function! MyLastWindow()
   endif
 endfunction
 
+" Autoclose Scratch
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 "---------------------------------
 " File Settings
 "---------------------------------
 set encoding=utf-8 " UTF-8
 set fileencoding=utf-8 " UTF-8
+
+" Disable two spaces after .
+set nojoinspaces
 
 " Turn tabs into spaces(4)
 set expandtab
@@ -183,16 +190,15 @@ let g:gist_show_privates = 1
 let g:pymode_folding = 0
 " --Enable Pylint
 let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
+" --Disable Pymode Help
+let g:pymode_doc = 0
+
 
 " --Skip Some checks
 " ---W0621 Redefining name from outer scope
 " ---C0301 Line length from pylint (covered by pep8)
-let g:pymode_lint_ignore = "W0621,C0301"
-
-" Additional python paths for OSX
-if system("uname") == "Darwin\n"
-    let g:pymode_paths = ['/usr/local/python2.7/site-packages', '/Library/Python/2.7/site-packages/']
-endif
+" ---C0121 __version__ required in every module (file)
+let g:pymode_lint_ignore = "W0621,C0301,C0121"
 
 " -*ML Autoclose Tags
 au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
@@ -208,6 +214,9 @@ nmap \ ,
 
 " List Buffers
 map <Leader>ll :ls<CR>
+
+":ccl quickfix list
+map <Leader>qf :ccl<CR>
 
 " Better window resizing
 " - Height
