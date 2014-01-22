@@ -67,7 +67,7 @@ highlight LineNr ctermbg=None guibg=None
 highlight SignColumn ctermbg=None guibg=None
 highlight CursorLine ctermfg=None guibg=None
 " Set current line number to have cursor column background
-highlight CursorLineNr ctermbg=237 guibg=#3c3d37
+highlight CursorLineNr ctermbg=236
 
 " Status Line
 highlight StatusLine ctermfg=16 guifg=#000000
