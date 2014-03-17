@@ -36,6 +36,8 @@ Bundle 'nginx.vim'
 Bundle 'markeganfuller/vim-puppet'
 " Wiki Syntax
 Bundle 'wikipedia.vim'
+" Salt SLS Syntax
+Bundle 'saltstack/salt-vim'
 "------------COLOURSCHEME
 " Monokai Colorscheme
 Bundle 'sickill/vim-monokai'
@@ -163,6 +165,9 @@ set shiftround " Round > indents to sw
 " Use Bash Higlighting not sh
 let g:is_bash = 1
 
+" Use Ruby highlighting for Vagrantfiles
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
+
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
     call mkdir($HOME . "/.vimswap")
@@ -199,10 +204,6 @@ let g:pymode_doc = 0
 " ---C0301 Line length from pylint (covered by pep8)
 " ---C0121 __version__ required in every module (file)
 let g:pymode_lint_ignore = "W0621,C0301,C0121"
-
-" -*ML Autoclose Tags
-au FileType xhtml,xml,tpl so ~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim
-
 
 "---------------------------------
 " Keybindings
