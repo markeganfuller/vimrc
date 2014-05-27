@@ -168,6 +168,13 @@ let g:is_bash = 1
 " Use Ruby highlighting for Vagrantfiles
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
+" Use markdown for .md
+au BufRead,BufNewFile *.md set filetype=markdown
+
+" Use sh for audit(d).rules
+au BufRead,BufNewFile audit.rules set filetype=sh
+au BufRead,BufNewFile auditd.rules set filetype=sh
+
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
     call mkdir($HOME . "/.vimswap")
