@@ -27,6 +27,10 @@ Bundle 'klen/python-mode'
 Bundle 'bling/vim-bufferline'
 " CTRL P
 Bundle 'kien/ctrlp.vim'
+" Nexus - Needed for Kweasy
+Bundle 'dahu/Nexus'
+" Kweasy
+Bundle 'dahu/vim-KWEasy'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -67,7 +71,7 @@ syntax on " Turn syntax highlighting on
 " Set line number and sign coloum to have normal bg
 highlight LineNr ctermbg=None guibg=None
 highlight SignColumn ctermbg=None guibg=None
-highlight CursorLine ctermfg=None guibg=None
+highlight CursorLine ctermbg=236 ctermfg=None guibg=None
 " Set current line number to have cursor column background
 highlight CursorLineNr ctermbg=236
 
@@ -215,10 +219,12 @@ let g:pymode_lint_ignore = "W0621,C0301,C0121"
 "---------------------------------
 " Keybindings
 "---------------------------------
-" Map Leader to two keys
+" Map Leader
+" mapped to , \ and <Space>
 let mapleader = ","
 let g:mapleader = ","
 nmap \ ,
+nmap <Space>  ,
 
 " List Buffers
 map <Leader>ll :ls<CR>
