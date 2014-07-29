@@ -179,6 +179,10 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile audit.rules set filetype=sh
 au BufRead,BufNewFile auditd.rules set filetype=sh
 
+" Use yaml for eyaml files
+au BufRead,BufNewFile *.eyaml set filetype=yaml
+au BufRead,BufNewFile eyaml_edit* set filetype=yaml
+
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
     call mkdir($HOME . "/.vimswap")
@@ -244,58 +248,9 @@ map <Leader>_ :vertical resize -5<CR>
 map <Leader>ss <Esc>:sb<space>
 
 " List Buffers
-map <Leader>ls <Esc>:ls<CR>
-
-" Buffer Hotkeys
-" Needed to stop vim help
-nmap <F1> :b1<CR>
-
-map <F1> :b1<CR>
-map <F2> :b2<CR>
-map <F3> :b3<CR>
-map <F4> :b4<CR>
-map <F5> :b5<CR>
-map <F6> :b6<CR>
-map <F7> :b7<CR>
-map <F8> :b8<CR>
-map <F9> :b9<CR>
-map <F10> :b10<CR>
-
-" And for insert mode
-imap <F1> <Esc> :b1<CR>
-imap <F2> <Esc> :b2<CR>
-imap <F3> <Esc> :b3<CR>
-imap <F4> <Esc> :b4<CR>
-imap <F5> <Esc> :b5<CR>
-imap <F6> <Esc> :b6<CR>
-imap <F7> <Esc> :b7<CR>
-imap <F8> <Esc> :b8<CR>
-imap <F9> <Esc> :b9<CR>
-imap <F10> <Esc> :b10<CR>
-
-" Tab Hotkeys
-map <Leader><F1> :tab 1<CR>
-map <Leader><F2> :tab 2<CR>
-map <Leader><F3> :tab 3<CR>
-map <Leader><F4> :tab 4<CR>
-map <Leader><F5> :tab 5<CR>
-map <Leader><F6> :tab 6<CR>
-map <Leader><F7> :tab 7<CR>
-map <Leader><F8> :tab 8<CR>
-map <Leader><F9> :tab 9<CR>
-map <Leader><F10> :tab 10<CR>
-
-" And for insert mode
-imap <Leader><F1> <Esc> :tab 1<CR>
-imap <Leader><F2> <Esc> :tab 2<CR>
-imap <Leader><F3> <Esc> :tab 3<CR>
-imap <Leader><F4> <Esc> :tab 4<CR>
-imap <Leader><F5> <Esc> :tab 5<CR>
-imap <Leader><F6> <Esc> :tab 6<CR>
-imap <Leader><F7> <Esc> :tab 7<CR>
-imap <Leader><F8> <Esc> :tab 8<CR>
-imap <Leader><F9> <Esc> :tab 9<CR>
-imap <Leader><F10> <Esc> :tab 10<CR>
+map <Leader>lb <Esc>:ls<CR>
+" Switch Buffer
+map <Leader>sb <Esc>:ls<CR>:b<Space>
 
 " Sessions
 map <Leader>sw :mksession! ~/.mysession.vim<CR>
@@ -356,7 +311,10 @@ map <Leader>sp :setlocal spell!<cr>
 map <Leader>pp :setlocal paste!<cr>
 
 " Toggle Line Numbers
-map <Leader>nn :set number!<CR> :set relativenumber!<CR>
+map <Leader>nn :set number! <bar> :set relativenumber!<CR>
+
+" Turn plaintext value into eyaml TODO make it work for lines without :
+map <Leader>te :norm f:wiDEC::PKCS7["<ESC>Ea"]!<ESC><CR>
 
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
