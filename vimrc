@@ -4,10 +4,10 @@ filetype off      " Turn Filetype off until plugins have been loaded
 "---------------------------------
 " Setup Vundle
 "---------------------------------
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 "---------------------------------
 " Vundle Bundles
@@ -48,6 +48,9 @@ Bundle 'sickill/vim-monokai'
 " Sorcerer Colorscheme
 Bundle 'vim-scripts/Sorcerer'
 "---------------------------------
+call vundle#end()
+filetype plugin indent on " Enable filetype plugins
+
 " Colour Scheme Setup
 "---------------------------------
 " If its a not a tty1-7 term and
@@ -92,7 +95,6 @@ highlight Search ctermbg=186 ctermfg=235
 set shell=bash " Set Shell
 set history=700 " Set history size
 set autoread " Auto read a file when its changed
-filetype plugin indent on " Enable filetype plugins
 set vb " Visual Bell only
 set modelines=5 " Fixes OSX not reading modelines
 set backspace=2 " Improve backspace
