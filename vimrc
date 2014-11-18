@@ -251,8 +251,12 @@ map <Leader>ss <Esc>:sb<space>
 
 " List Buffers
 map <Leader>lb <Esc>:ls<CR>
+
 " Switch Buffer
 map <Leader>sb <Esc>:ls<CR>:b<Space>
+"
+" Vert Split Buffer
+map <Leader>vb <Esc>:ls<CR>:vert sb<Space>
 
 " Sessions
 map <Leader>sw :mksession! ~/.mysession.vim<CR>
@@ -279,6 +283,7 @@ nmap <Leader>qw :windo /<C-r><C-w><CR><Bar><i>
 nmap <Leader>ev :tabnew<CR>:cd ~/repos/mine/dotfiles/vimrc<bar>:e vimrc<CR>
 nmap <Leader>eb :tabnew<CR>:cd ~/repos/mine/dotfiles/bashrc<bar>:e bashrc<CR>
 nmap <Leader>et :e ~/todo.txt<CR>
+nmap <Leader>es :e ~/scratchpads/
 " Reload vimrc
 nmap <Leader>lv :so $MYVIMRC<CR>
 
