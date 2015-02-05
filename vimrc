@@ -152,6 +152,9 @@ endfunction
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" Diff Buffer against file
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
 "---------------------------------
 " File Settings
 "---------------------------------
