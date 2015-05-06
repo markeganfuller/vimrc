@@ -304,6 +304,10 @@ nmap <Leader>nc :set colorcolumn=<CR>
 map <Leader>sn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Insert Python Break Point
+map <Leader>xx :normal oimport pdb; pdb.set_trace()  # XXX BREAKPOINT<ESC>
+map <Leader>xu :normal oimport pudb; pudb.set_trace()  # XXX BREAKPOINT<ESC>
 "-------------------Matching
 " Match Tabs and show as errors
 map <Leader>mt :match Error /\t/<cr>
@@ -324,7 +328,7 @@ map <Leader>pp :setlocal paste!<cr>
 map <Leader>nn :set number! <bar> :set relativenumber!<CR>
 
 " Turn plaintext value into eyaml TODO make it work for lines without :
-map <Leader>te :norm f:wiDEC::PKCS7["<ESC>Ea"]!<ESC><CR>
+map <Leader>te :norm f:wiDEC::PKCS7[<ESC>Ea]!<ESC><CR>
 
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
