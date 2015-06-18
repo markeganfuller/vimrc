@@ -42,6 +42,8 @@ Bundle 'markeganfuller/vim-puppet'
 Bundle 'wikipedia.vim'
 " Salt SLS Syntax
 Bundle 'saltstack/salt-vim'
+" TWiki Syntax
+Bundle 'vim-scripts/TWiki-Syntax'
 "------------COLOURSCHEME
 " Monokai Colorscheme
 Bundle 'sickill/vim-monokai'
