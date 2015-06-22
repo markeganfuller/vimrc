@@ -45,8 +45,8 @@ Bundle 'saltstack/salt-vim'
 " TWiki Syntax
 Bundle 'vim-scripts/TWiki-Syntax'
 "------------COLOURSCHEME
-" Monokai Colorscheme
-Bundle 'sickill/vim-monokai'
+" Apprentice Colorscheme
+Bundle 'romainl/apprentice'
 " Sorcerer Colorscheme
 Bundle 'vim-scripts/Sorcerer'
 "---------------------------------
@@ -61,8 +61,8 @@ filetype plugin indent on " Enable filetype plugins
 if $TERM != 'linux'
     try
         set t_Co=256
-        "colorscheme Monokai
-        colorscheme sorcerer
+        "colorscheme sorcerer
+        colorscheme apprentice
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
         set bg=dark
@@ -107,7 +107,7 @@ set nosmartindent " Not Smart
 set scrolloff=8 " Keep 8 lines either way
 set cursorline " Highlight current line
 set number " Turn on line numbers
-set relativenumber " Turn on relative line numbers
+"set relativenumber " Turn on relative line numbers
 
 set incsearch " Search as you type
 set hlsearch " Highlight search
@@ -327,7 +327,8 @@ map <Leader>sp :setlocal spell!<cr>
 map <Leader>pp :setlocal paste!<cr>
 
 " Toggle Line Numbers
-map <Leader>nn :set number! <bar> :set relativenumber!<CR>
+"map <Leader>nn :set number! <bar> :set relativenumber!<CR>
+map <Leader>nn :set number!<CR>
 
 " Turn plaintext value into eyaml TODO make it work for lines without :
 map <Leader>te :norm f:wiDEC::PKCS7[<ESC>Ea]!<ESC><CR>
