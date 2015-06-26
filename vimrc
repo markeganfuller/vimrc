@@ -190,6 +190,9 @@ au BufRead,BufNewFile auditd.rules set filetype=sh
 au BufRead,BufNewFile *.eyaml set filetype=yaml
 au BufRead,BufNewFile eyaml_edit* set filetype=yaml
 
+" Use twiki for .twiki files
+au BufRead,BufNewFile *.twiki set filetype=twiki
+
 " Store swap files in fixed location, not current directory.
 if !isdirectory($HOME . "/.vimswap")
     call mkdir($HOME . "/.vimswap")
