@@ -61,7 +61,6 @@ filetype plugin indent on " Enable filetype plugins
 if $TERM != 'linux'
     try
         set t_Co=256
-        "colorscheme sorcerer
         colorscheme apprentice
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
@@ -288,8 +287,8 @@ nmap <Leader>qq [I
 nmap <Leader>qw :windo /<C-r><C-w><CR><Bar><i>
 
 " Edit Various Files
-nmap <Leader>ev :tabnew<CR>:cd ~/repos/mine/dotfiles/vimrc<bar>:e vimrc<CR>
-nmap <Leader>eb :tabnew<CR>:cd ~/repos/mine/dotfiles/bashrc<bar>:e bashrc<CR>
+nmap <Leader>ev :e ~/repos/mine/dotfiles/vimrc/vimrc<CR>
+nmap <Leader>eb :e ~/repos/mine/dotfiles/bashrc/bashrc<CR>
 nmap <Leader>et :e ~/todo.txt<CR>
 nmap <Leader>es :e ~/scratchpads/
 " Reload vimrc
