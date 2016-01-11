@@ -26,7 +26,7 @@ Bundle 'klen/python-mode'
 " Buffer Line
 Bundle 'bling/vim-bufferline'
 " CTRL P
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 " Nexus - Needed for Kweasy
 Bundle 'dahu/Nexus'
 " Kweasy
@@ -221,6 +221,7 @@ let g:pymode_folding = 0
 let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
 " --Disable Pymode Help
 let g:pymode_doc = 0
+let g:pymode_options_colorcolumn = 0
 
 
 " --Skip Some checks
@@ -289,7 +290,7 @@ nmap <Leader>qw :windo /<C-r><C-w><CR><Bar><i>
 " Edit Various Files
 nmap <Leader>ev :e ~/repos/mine/dotfiles/vimrc/vimrc<CR>
 nmap <Leader>eb :e ~/repos/mine/dotfiles/bashrc/bashrc<CR>
-nmap <Leader>et :e ~/todo.txt<CR>
+nmap <Leader>et :e ~/todo.md<CR>
 nmap <Leader>es :e ~/scratchpads/
 " Reload vimrc
 nmap <Leader>lv :so $MYVIMRC<CR>
