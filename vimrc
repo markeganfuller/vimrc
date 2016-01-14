@@ -218,7 +218,9 @@ let g:gist_show_privates = 1
 " --Disable Pymode Folding
 let g:pymode_folding = 0
 " --Enable Pylint
-let g:pymode_lint_checker = "pyflakes,pep8,pylint,mccabe"
+let g:pymode_lint_on_unmodified = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint', 'mccabe', 'pep257']
+let g:pymode_rope = 0
 " --Disable Pymode Help
 let g:pymode_doc = 0
 let g:pymode_options_colorcolumn = 0
