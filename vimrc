@@ -73,9 +73,9 @@ endif
 syntax on " Turn syntax highlighting on
 
 " Set line number and sign coloum to have normal bg
-highlight LineNr ctermbg=None guibg=None
-highlight SignColumn ctermbg=None guibg=None
-highlight CursorLine ctermbg=236 ctermfg=None guibg=None
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+highlight CursorLine ctermbg=236 ctermfg=NONE guibg=NONE
 " Set current line number to have cursor column background
 highlight CursorLineNr ctermbg=236
 
