@@ -193,10 +193,12 @@ au BufRead,BufNewFile eyaml_edit* set filetype=yaml
 au BufRead,BufNewFile *.twiki set filetype=twiki
 
 " Store swap files in fixed location, not current directory.
-if !isdirectory($HOME . "/.vimswap")
-    call mkdir($HOME . "/.vimswap")
+if !empty($HOME)
+    if !isdirectory($HOME . "/.vimswap")
+        call mkdir($HOME . "/.vimswap")
+    endif
+    set dir=~/.vimswap//
 endif
-set dir=~/.vimswap//
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
