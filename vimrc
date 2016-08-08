@@ -37,7 +37,7 @@ Bundle 'vim-scripts/nagios-syntax'
 " Nginx Syntax
 Bundle 'nginx.vim'
 " Puppet Syntax etc
-Bundle 'markeganfuller/vim-puppet'
+Bundle 'rodjek/vim-puppet'
 " Wiki Syntax
 Bundle 'wikipedia.vim'
 " Salt SLS Syntax
