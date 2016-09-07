@@ -14,23 +14,16 @@ Bundle 'gmarik/Vundle.vim'
 "---------------------------------
 " Tabuliser for => in puppet etc
 Bundle 'godlygeek/tabular'
-" Gist Integration
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
 " Git Commands
 Bundle 'tpope/vim-fugitive.git'
 " Git Diff in Gutter
 Bundle 'airblade/vim-gitgutter'
-" Python Indentation
-Bundle 'klen/python-mode'
 " Buffer Line
 Bundle 'bling/vim-bufferline'
 " CTRL P
 Bundle 'ctrlpvim/ctrlp.vim'
-" Nexus - Needed for Kweasy
-Bundle 'dahu/Nexus'
-" Kweasy
-Bundle 'dahu/vim-KWEasy'
+" Syntastic syntax checking
+Bundle 'scrooloose/syntastic'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -47,8 +40,6 @@ Bundle 'vim-scripts/TWiki-Syntax'
 "------------COLOURSCHEME
 " Apprentice Colorscheme
 Bundle 'romainl/apprentice'
-" Sorcerer Colorscheme
-Bundle 'vim-scripts/Sorcerer'
 "---------------------------------
 call vundle#end()
 filetype plugin indent on " Enable filetype plugins
@@ -212,43 +203,24 @@ autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
 "---------------------------------
 " Plugin Settings
 "---------------------------------
-" -Gist
-" --Use Private Gists
-let g:gist_post_private = 1
-let g:gist_show_privates = 1
-
-" --Disable Pymode Folding
-let g:pymode_folding = 0
-" --Enable Pylint
-let g:pymode_lint_on_unmodified = 1
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint', 'mccabe', 'pep257']
-let g:pymode_rope = 0
-" --Disable Pymode Help
-let g:pymode_doc = 0
-let g:pymode_options_colorcolumn = 0
-
-
-" --Skip Some checks
-" ---W0621 Redefining name from outer scope
-" ---C0301 Line length from pylint (covered by pep8)
-" ---C0121 __version__ required in every module (file)
-let g:pymode_lint_ignore = "W0621,C0301,C0121"
+let g:syntastic_always_populate_loc_list = 1
 
 "---------------------------------
 " Keybindings
 "---------------------------------
 " Map Leader
-" mapped to , \ and <Space>
+" mapped to ,
 let mapleader = ","
 let g:mapleader = ","
-nmap \ ,
-nmap <Space>  ,
+
+" Toggle location list
+map <Leader>loc :lopen<CR>
+
+" Next location
+map <Leader>nl :lnext<CR>
 
 " List Buffers
 map <Leader>ll :ls<CR>
-
-":ccl quickfix list
-map <Leader>qf :ccl<CR>
 
 " Better window resizing
 " - Height
@@ -259,20 +231,16 @@ map <Leader>+ :vertical resize +5<CR>
 map <Leader>_ :vertical resize -5<CR>
 
 " Split Buffer
-map <Leader>ss <Esc>:sb<space>
+map <Leader>xb <Esc>:sb<space>
 
-" List Buffers
-map <Leader>lb <Esc>:ls<CR>
-
-" Switch Buffer
-map <Leader>sb <Esc>:ls<CR>:b<Space>
-"
 " Vert Split Buffer
 map <Leader>vb <Esc>:ls<CR>:vert sb<Space>
 
-" Sessions
-map <Leader>sw :mksession! ~/.mysession.vim<CR>
-map <Leader>sr :source ~/.mysession.vim<CR>
+" List Buffers
+map <Leader>ls <Esc>:ls<CR>
+
+" Switch Buffer
+map <Leader>sb <Esc>:ls<CR>:b<Space>
 
 " Clear search highlighting
 nnoremap <c-l> :noh<CR><c-l>
@@ -285,7 +253,7 @@ nnoremap * #
 nnoremap <C-o> <C-i>
 nnoremap <C-i> <C-o>
 
-" Remap [I (Search)
+" Remap [I Show all lines containing string
 nmap <Leader>qq [I
 
 " Search in windows
@@ -296,6 +264,7 @@ nmap <Leader>ev :e ~/repos/mine/dotfiles/vimrc/vimrc<CR>
 nmap <Leader>eb :e ~/repos/mine/dotfiles/bashrc/bashrc<CR>
 nmap <Leader>et :e ~/todo.md<CR>
 nmap <Leader>es :e ~/scratchpads/
+
 " Reload vimrc
 nmap <Leader>lv :so $MYVIMRC<CR>
 
@@ -337,9 +306,6 @@ map <Leader>pp :setlocal paste!<cr>
 "map <Leader>nn :set number! <bar> :set relativenumber!<CR>
 map <Leader>nn :set number!<CR>
 
-" Turn plaintext value into eyaml TODO make it work for lines without :
-map <Leader>te :norm f:wiDEC::PKCS7[<ESC>Ea]!<ESC><CR>
-
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
 " Good for working in multiple terms
@@ -356,8 +322,3 @@ nmap <Leader>ta :. w! >>~/.vimxfer<CR>
 vmap <Leader>tw :w! ~/.vimxfer<CR>
 " Append
 vmap <Leader>ta :w! >>~/.vimxfer<CR>
-
-"-------------------NERDTree
-map <Leader>tt :NERDTreeTabsToggle<CR>
-"-------------------Gitgutter
-map <Leader>gg :GitGutterToggle<CR>
