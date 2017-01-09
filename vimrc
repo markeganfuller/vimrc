@@ -24,6 +24,8 @@ Bundle 'bling/vim-bufferline'
 Bundle 'ctrlpvim/ctrlp.vim'
 " Syntastic syntax checking
 Bundle 'scrooloose/syntastic'
+" Python indentation
+Plugin 'hynek/vim-python-pep8-indent'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -156,18 +158,19 @@ set fileencoding=utf-8 " UTF-8
 " Disable two spaces after .
 set nojoinspaces
 
-" Turn tabs into spaces(4)
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+" Tab / Indent setup
+set expandtab "Tab inserts spaces
 set shiftround " Round > indents to sw
+set softtabstop=4 "Number of spaces that a <Tab> counts for when inserting
+set shiftwidth=4 "Indent size for autoindent
 
 " Use Bash Higlighting not sh
 let g:is_bash = 1
 
 " Use Ruby highlighting for Vagrantfiles
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
+" Use 2 space indent for ruby
+au FileType ruby setlocal shiftwidth=2 softtabstop=2
 
 " Use markdown for .md
 au BufRead,BufNewFile *.md set filetype=markdown
