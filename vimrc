@@ -93,6 +93,16 @@ set vb " Visual Bell only
 set modelines=5 " Fixes OSX not reading modelines
 set backspace=2 " Improve backspace
 
+set undofile " Persistent undo history
+
+" Store undo files in fixed location, not current directory.
+if !empty($HOME)
+    if !isdirectory($HOME . "/.vimundo")
+        call mkdir($HOME . "/.vimundo")
+    endif
+    set undodir=~/.vimundo
+endif
+
 set autoindent " Follow last lines indent
 set nosmartindent " Not Smart
 
