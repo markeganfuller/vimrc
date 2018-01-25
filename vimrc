@@ -196,6 +196,12 @@ au BufRead,BufNewFile eyaml_edit* set filetype=yaml
 " Use twiki for .twiki files
 au BufRead,BufNewFile *.twiki set filetype=twiki
 
+" Use tcl for module files
+au BufRead,BufNewFile *
+    \ if getline(1) =~ '^#%Module#' |
+    \   set filetype=tcl |
+    \ endif
+
 " Store swap files in fixed location, not current directory.
 if !empty($HOME)
     if !isdirectory($HOME . "/.vimswap")
