@@ -198,7 +198,7 @@ au BufRead,BufNewFile *.twiki set filetype=twiki
 
 " Use tcl for module files
 au BufRead,BufNewFile *
-    \ if getline(1) =~ '^#%Module#' |
+    \ if getline(1) =~ '^#%Module' |
     \   set filetype=tcl |
     \ endif
 
