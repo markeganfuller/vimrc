@@ -217,7 +217,7 @@ autocmd BufReadPost *
      \ endif
 
 " Delete trailing whitespace on save
-autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 "---------------------------------
 " Plugin Settings
