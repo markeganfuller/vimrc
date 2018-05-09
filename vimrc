@@ -39,6 +39,10 @@ Bundle 'wikipedia.vim'
 Bundle 'saltstack/salt-vim'
 " TWiki Syntax
 Bundle 'vim-scripts/TWiki-Syntax'
+" Singularity Syntax
+Bundle 'rbberger/vim-singularity-syntax'
+" Jenkinsfile Syntax
+Bundle 'martinda/Jenkinsfile-vim-syntax'
 "------------COLOURSCHEME
 " Apprentice Colorscheme
 Bundle 'romainl/apprentice'
