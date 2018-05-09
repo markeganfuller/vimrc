@@ -227,6 +227,7 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 " Plugin Settings
 "---------------------------------
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_checkers = ['pylint', 'flake8', 'pydocstyle', 'python', 'pycodestyle']
 
 "---------------------------------
 " Keybindings
