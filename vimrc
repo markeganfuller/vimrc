@@ -22,8 +22,8 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-bufferline'
 " CTRL P
 Bundle 'ctrlpvim/ctrlp.vim'
-" Syntastic syntax checking
-Bundle 'scrooloose/syntastic'
+" ALE syntax checking
+Bundle 'w0rp/ale'
 " Python indentation
 Plugin 'hynek/vim-python-pep8-indent'
 "------------SYNTAX
@@ -40,7 +40,7 @@ Bundle 'saltstack/salt-vim'
 " TWiki Syntax
 Bundle 'vim-scripts/TWiki-Syntax'
 " Singularity Syntax
-Bundle 'rbberger/vim-singularity-syntax'
+Bundle 'singularityware/singularity.lang', {'rtp': 'vim/'}
 " Jenkinsfile Syntax
 Bundle 'martinda/Jenkinsfile-vim-syntax'
 "------------COLOURSCHEME
@@ -142,7 +142,34 @@ set showcmd
 
 " Set Status Line
 set laststatus=2
-set statusline=\|\ %c:%l\[%L\][%{&syntax}]%r%m%<%=%{$USER}@%{hostname()}\ %F\ \|
+" ALE linter info for status line
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? '' : printf(
+    \   '[W%d E%d]',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=
+" Column, Line, Total line count
+set statusline+=\ %c:%l[%L]
+" Syntax of file and lint status
+set statusline+=[%{&syntax}]%{LinterStatus()}
+" Read only flag and modified flag
+set statusline+=%r%m%<
+" Left / right separator
+set statusline+=%=
+" user@host
+set statusline+=%{$USER}@%{hostname()}
+" File name
+set statusline+=\ %.30F
+set statusline+=\ |
 
 " Autoclose quickfix if last window
 au BufEnter * call MyLastWindow()
@@ -226,8 +253,12 @@ autocmd BufWritePre <buffer> :%s/\s\+$//e
 "---------------------------------
 " Plugin Settings
 "---------------------------------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_checkers = ['pylint', 'flake8', 'pydocstyle', 'python', 'pycodestyle']
+
+" ALE
+" Enable completion where available.
+let g:ale_completion_enabled = 1
+" Always show sign gutter
+let g:ale_sign_column_always = 1
 
 "---------------------------------
 " Keybindings
