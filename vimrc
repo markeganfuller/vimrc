@@ -26,6 +26,8 @@ Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'w0rp/ale'
 " Python indentation
 Plugin 'hynek/vim-python-pep8-indent'
+" Show registers when accessing
+Plugin 'junegunn/vim-peekaboo'
 "------------SYNTAX
 " Nagios Syntax
 Bundle 'vim-scripts/nagios-syntax'
@@ -75,17 +77,13 @@ highlight SignColumn ctermbg=NONE guibg=NONE
 highlight CursorLine ctermbg=236 ctermfg=NONE guibg=NONE
 " Set current line number to have cursor column background
 highlight CursorLineNr ctermbg=236
-
 " Status Line
 highlight StatusLine ctermfg=16 guifg=#000000
 highlight StatusLineNC ctermfg=16 guifg=#000000
-
 " Set Colour for column highlighting
 highlight ColorColumn ctermbg=16 guibg=#000000
-
 " Set Highlight for search
 highlight Search ctermbg=186 ctermfg=235
-
 
 "---------------------------------
 " Editor Settings
@@ -98,7 +96,6 @@ set modelines=5 " Fixes OSX not reading modelines
 set backspace=2 " Improve backspace
 
 set undofile " Persistent undo history
-
 " Store undo files in fixed location, not current directory.
 if !empty($HOME)
     if !isdirectory($HOME . "/.vimundo")
@@ -113,7 +110,7 @@ set nosmartindent " Not Smart
 set scrolloff=8 " Keep 8 lines either way
 set cursorline " Highlight current line
 set number " Turn on line numbers
-"set relativenumber " Turn on relative line numbers
+set relativenumber " Turn on relative line numbers
 
 set incsearch " Search as you type
 set hlsearch " Highlight search
@@ -127,20 +124,52 @@ set splitright
 set hidden
 set switchbuf=useopen,split
 
-" Auto Change CWD to file dir
-set autochdir
-
-" Enable Omnicompletion
-" <C-x><C-o>
-set omnifunc=syntaxcomplete#Complete
-
+set autochdir " Auto Change CWD to file dir
 set title " Set title of term window
 
 " Show Mode and Command in bar
 set showmode
 set showcmd
 
+" Autoclose quickfix if last window
+au BufEnter * call MyLastWindow()
+function! MyLastWindow()
+  " if the window is quickfix go on
+  if &buftype=="quickfix"
+    " if this window is last on screen quit without warning
+    if winbufnr(2) == -1
+      quit!
+    endif
+  endif
+endfunction
+
+" Autoclose Scratch
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Diff Buffer against file
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
+" Store swap files in fixed location, not current directory.
+if !empty($HOME)
+    if !isdirectory($HOME . "/.vimswap")
+        call mkdir($HOME . "/.vimswap")
+    endif
+    set dir=~/.vimswap//
+endif
+
+" Return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Delete trailing whitespace on save
+autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+"---------------------------------
 " Set Status Line
+"---------------------------------
 set laststatus=2
 " ALE linter info for status line
 function! LinterStatus() abort
@@ -171,30 +200,11 @@ set statusline+=%{$USER}@%{hostname()}
 set statusline+=\ %.30F
 set statusline+=\ |
 
-" Autoclose quickfix if last window
-au BufEnter * call MyLastWindow()
-function! MyLastWindow()
-  " if the window is quickfix go on
-  if &buftype=="quickfix"
-    " if this window is last on screen quit without warning
-    if winbufnr(2) == -1
-      quit!
-    endif
-  endif
-endfunction
-
-" Autoclose Scratch
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-" Diff Buffer against file
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-
 "---------------------------------
 " File Settings
 "---------------------------------
-set encoding=utf-8 " UTF-8
-set fileencoding=utf-8 " UTF-8
+set encoding=utf-8
+set fileencoding=utf-8
 
 " Disable two spaces after .
 set nojoinspaces
@@ -205,50 +215,27 @@ set shiftround " Round > indents to sw
 set softtabstop=4 "Number of spaces that a <Tab> counts for when inserting
 set shiftwidth=4 "Indent size for autoindent
 
-" Use Bash Higlighting not sh
-let g:is_bash = 1
-
-" Use Ruby highlighting for Vagrantfiles
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
 " Use 2 space indent for ruby
 au FileType ruby setlocal shiftwidth=2 softtabstop=2
 
-" Use markdown for .md
-au BufRead,BufNewFile *.md set filetype=markdown
+" Use Bash Higlighting not sh
+let g:is_bash = 1
 
-" Use sh for audit(d).rules
+"---------------------------------
+" File Syntax Settings
+"---------------------------------
 au BufRead,BufNewFile audit.rules set filetype=sh
 au BufRead,BufNewFile auditd.rules set filetype=sh
-
-" Use yaml for eyaml files
 au BufRead,BufNewFile *.eyaml set filetype=yaml
 au BufRead,BufNewFile eyaml_edit* set filetype=yaml
-
-" Use twiki for .twiki files
-au BufRead,BufNewFile *.twiki set filetype=twiki
-
+au BufRead,BufNewFile *.md set filetype=markdown
 " Use tcl for module files
 au BufRead,BufNewFile *
     \ if getline(1) =~ '^#%Module' |
     \   set filetype=tcl |
     \ endif
-
-" Store swap files in fixed location, not current directory.
-if !empty($HOME)
-    if !isdirectory($HOME . "/.vimswap")
-        call mkdir($HOME . "/.vimswap")
-    endif
-    set dir=~/.vimswap//
-endif
-
-" Return to last edit position when opening files
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
-" Delete trailing whitespace on save
-autocmd BufWritePre <buffer> :%s/\s\+$//e
+au BufRead,BufNewFile *.twiki set filetype=twiki
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
 "---------------------------------
 " Plugin Settings
@@ -269,13 +256,10 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Toggle location list
-map <Leader>loc :lopen<CR>
+map <Leader>ll :lopen<CR>
 
 " Next location
-map <Leader>nl :lnext<CR>
-
-" List Buffers
-map <Leader>ll :ls<CR>
+map <Leader>lln :lnext<CR>
 
 " Better window resizing
 " - Height
@@ -285,22 +269,22 @@ map <Leader>- :resize -5<CR>
 map <Leader>+ :vertical resize +5<CR>
 map <Leader>_ :vertical resize -5<CR>
 
+" List Buffers
+map <Leader>lb :ls<CR>
+
 " Split Buffer
 map <Leader>xb <Esc>:sb<space>
 
 " Vert Split Buffer
 map <Leader>vb <Esc>:ls<CR>:vert sb<Space>
 
-" List Buffers
-map <Leader>ls <Esc>:ls<CR>
-
 " Switch Buffer
 map <Leader>sb <Esc>:ls<CR>:b<Space>
 
-" Clear search highlighting
+" Override CTRL+L to clear and remove search highlighting
 nnoremap <c-l> :noh<CR><c-l>
 
-" Fix *# direction (search for w)
+" Switch *# direction (search for w)
 nnoremap # *
 nnoremap * #
 
@@ -358,8 +342,8 @@ map <Leader>sp :setlocal spell!<cr>
 map <Leader>pp :setlocal paste!<cr>
 
 " Toggle Line Numbers
-"map <Leader>nn :set number! <bar> :set relativenumber!<CR>
-map <Leader>nn :set number!<CR>
+map <Leader>nn :set number! <bar> :set relativenumber!<CR>
+"map <Leader>nn :set number!<CR>
 
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
