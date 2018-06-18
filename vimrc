@@ -52,6 +52,7 @@ Bundle 'romainl/apprentice'
 call vundle#end()
 filetype plugin indent on " Enable filetype plugins
 
+"---------------------------------
 " Colour Scheme Setup
 "---------------------------------
 " If its a not a tty1-7 term and
@@ -70,6 +71,10 @@ else
 endif
 
 syntax on " Turn syntax highlighting on
+
+"---------------------------------
+" Colour Scheme Tweaks
+"---------------------------------
 
 " Set line number and sign coloum to have normal bg
 highlight LineNr ctermbg=NONE guibg=NONE
