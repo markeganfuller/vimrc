@@ -45,6 +45,12 @@ Bundle 'vim-scripts/TWiki-Syntax'
 Bundle 'singularityware/singularity.lang', {'rtp': 'vim/'}
 " Jenkinsfile Syntax
 Bundle 'martinda/Jenkinsfile-vim-syntax'
+" Jinja Syntax
+Bundle 'Glench/Vim-Jinja2-Syntax'
+" Toml syntax
+Bundle 'cespare/vim-toml'
+" Ansible
+Bundle 'pearofducks/ansible-vim'
 "------------COLOURSCHEME
 " Apprentice Colorscheme
 Bundle 'romainl/apprentice'
@@ -241,6 +247,7 @@ au BufRead,BufNewFile *
     \ endif
 au BufRead,BufNewFile *.twiki set filetype=twiki
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
+au BufRead,BufNewFile *.tmpl set filetype=jinja
 
 "---------------------------------
 " Plugin Settings
