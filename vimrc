@@ -176,7 +176,13 @@ autocmd BufReadPost *
      \ endif
 
 " Delete trailing whitespace on save
-autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd BufWritePre * :call DeleteTrailingWhitespace()
+
+function! DeleteTrailingWhitespace()
+    let save_pos = getpos(".")
+    %s/\s\+$//e
+    call setpos('.', save_pos)
+endfunction
 
 "---------------------------------
 " Set Status Line
