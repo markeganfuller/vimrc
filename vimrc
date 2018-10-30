@@ -135,7 +135,6 @@ set splitright
 set hidden
 set switchbuf=useopen,split
 
-set autochdir " Auto Change CWD to file dir
 set title " Set title of term window
 
 " Show Mode and Command in bar
@@ -265,6 +264,10 @@ let g:ale_completion_enabled = 1
 " Always show sign gutter
 let g:ale_sign_column_always = 1
 
+" CtrlP
+let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
+let g:ctrlp_cmd = 'CtrlPMixed'
+
 "---------------------------------
 " Keybindings
 "---------------------------------
@@ -272,6 +275,9 @@ let g:ale_sign_column_always = 1
 " mapped to ,
 let mapleader = ","
 let g:mapleader = ","
+
+" Generate tags
+map <Leader>gt :!ctags -R<CR>
 
 " Toggle location list
 map <Leader>ll :lopen<CR>
