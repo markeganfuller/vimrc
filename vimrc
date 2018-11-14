@@ -4,7 +4,7 @@ filetype off      " Turn Filetype off until plugins have been loaded
 "---------------------------------
 " Setup Vundle
 "---------------------------------
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Let Vundle manage Vundle
 Bundle 'gmarik/Vundle.vim'
@@ -64,13 +64,13 @@ filetype plugin indent on " Enable filetype plugins
 " If its a not a tty1-7 term and
 " a preferred cs is installed use it
 " Else use pablo
-if $TERM != 'linux'
+if $TERM !=# 'linux'
     try
         set t_Co=256
         colorscheme apprentice
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
-        set bg=dark
+        set background=dark
     endtry
 else
     colorscheme pablo
@@ -102,15 +102,15 @@ highlight Search ctermbg=186 ctermfg=235
 set shell=bash " Set Shell
 set history=700 " Set history size
 set autoread " Auto read a file when its changed
-set vb " Visual Bell only
+set visualbell " Visual Bell only
 set modelines=5 " Fixes OSX not reading modelines
 set backspace=2 " Improve backspace
 
 set undofile " Persistent undo history
 " Store undo files in fixed location, not current directory.
 if !empty($HOME)
-    if !isdirectory($HOME . "/.vimundo")
-        call mkdir($HOME . "/.vimundo")
+    if !isdirectory($HOME . '/.vimundo')
+        call mkdir($HOME . '/.vimundo')
     endif
     set undodir=~/.vimundo
 endif
@@ -145,7 +145,7 @@ set showcmd
 au BufEnter * call MyLastWindow()
 function! MyLastWindow()
   " if the window is quickfix go on
-  if &buftype=="quickfix"
+  if &buftype ==? 'quickfix'
     " if this window is last on screen quit without warning
     if winbufnr(2) == -1
       quit!
@@ -162,10 +162,10 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 
 " Store swap files in fixed location, not current directory.
 if !empty($HOME)
-    if !isdirectory($HOME . "/.vimswap")
-        call mkdir($HOME . "/.vimswap")
+    if !isdirectory($HOME . '/.vimswap')
+        call mkdir($HOME . '/.vimswap')
     endif
-    set dir=~/.vimswap//
+    set directory=~/.vimswap//
 endif
 
 " Return to last edit position when opening files
@@ -178,7 +178,7 @@ autocmd BufReadPost *
 autocmd BufWritePre * :call DeleteTrailingWhitespace()
 
 function! DeleteTrailingWhitespace()
-    let save_pos = getpos(".")
+    let save_pos = getpos('.')
     %s/\s\+$//e
     call setpos('.', save_pos)
 endfunction
@@ -275,8 +275,8 @@ let g:ctrlp_custom_ignore= 'vendor\|env'
 "---------------------------------
 " Map Leader
 " mapped to ,
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = ','
+let g:mapleader = ','
 
 " Generate tags
 map <Leader>gt :!ctags -R<CR>
