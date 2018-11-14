@@ -266,7 +266,9 @@ let g:ale_sign_column_always = 1
 
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
+let g:ctrlp_mruf_relative = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_custom_ignore= 'vendor\|env'
 
 "---------------------------------
 " Keybindings
