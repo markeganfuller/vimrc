@@ -206,6 +206,8 @@ set statusline=
 set statusline+=\ %c:%l[%L]
 " Syntax of file and lint status
 set statusline+=[%{&syntax}]%{LinterStatus()}
+" Git status
+set statusline+=%{FugitiveStatusline()}
 " Read only flag and modified flag
 set statusline+=%r%m%<
 " Left / right separator
