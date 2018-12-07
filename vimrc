@@ -28,6 +28,8 @@ Bundle 'w0rp/ale'
 Plugin 'hynek/vim-python-pep8-indent'
 " Show registers when accessing
 Plugin 'junegunn/vim-peekaboo'
+" Comments
+Plugin 'scrooloose/nerdcommenter'
 "------------SYNTAX
 " Nagios
 Bundle 'vim-scripts/nagios-syntax'
@@ -274,6 +276,13 @@ let g:ctrlp_mruf_relative = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore= 'vendor\|env'
 
+" Nerdcommenter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDCommentEmptyLines = 1
+let g:NERDCommentWholeLinesInVMode = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+
 "---------------------------------
 " Keybindings
 "---------------------------------
@@ -342,6 +351,10 @@ nmap <Leader>ft :%s/\t/    /g<CR>
 
 " Insert a Space
 nmap <Leader><Space> :normal i <ESC>
+
+" Comment line (Nerdcommenter)
+nmap <Leader># <plug>NERDCommenterToggle
+vmap <leader># <plug>NERDCommenterToggle gv
 
 " Colour Columns 80+
 nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
