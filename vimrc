@@ -29,28 +29,30 @@ Plugin 'hynek/vim-python-pep8-indent'
 " Show registers when accessing
 Plugin 'junegunn/vim-peekaboo'
 "------------SYNTAX
-" Nagios Syntax
+" Nagios
 Bundle 'vim-scripts/nagios-syntax'
-" Nginx Syntax
+" Nginx
 Bundle 'nginx.vim'
-" Puppet Syntax etc
+" Puppet
 Bundle 'rodjek/vim-puppet'
-" Wiki Syntax
+" MediaWiki
 Bundle 'wikipedia.vim'
-" Salt SLS Syntax
+" Salt
 Bundle 'saltstack/salt-vim'
-" TWiki Syntax
+" TWiki
 Bundle 'vim-scripts/TWiki-Syntax'
-" Singularity Syntax
+" Singularity
 Bundle 'singularityware/singularity.lang', {'rtp': 'vim/'}
-" Jenkinsfile Syntax
+" Jenkinsfile
 Bundle 'martinda/Jenkinsfile-vim-syntax'
-" Jinja Syntax
+" Jinja
 Bundle 'Glench/Vim-Jinja2-Syntax'
-" Toml syntax
+" Toml
 Bundle 'cespare/vim-toml'
 " Ansible
 Bundle 'pearofducks/ansible-vim'
+" Bytemark Custodian
+Bundle 'user4574/custodian-syntax'
 "------------COLOURSCHEME
 " Apprentice Colorscheme
 Bundle 'romainl/apprentice'
@@ -255,6 +257,7 @@ au BufRead,BufNewFile *
 au BufRead,BufNewFile *.twiki set filetype=twiki
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
 au BufRead,BufNewFile *.tmpl set filetype=jinja
+au BufRead,BufNewFile *custodian-config/*.cfg set filetype=custodian
 
 "---------------------------------
 " Plugin Settings
