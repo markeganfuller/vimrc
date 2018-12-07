@@ -257,7 +257,6 @@ au BufRead,BufNewFile *
 au BufRead,BufNewFile *.twiki set filetype=twiki
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
 au BufRead,BufNewFile *.tmpl set filetype=jinja
-au BufRead,BufNewFile *custodian-config/*.cfg set filetype=custodian
 
 "---------------------------------
 " Plugin Settings
