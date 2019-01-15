@@ -30,6 +30,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'junegunn/vim-peekaboo'
 " Comments
 Plugin 'scrooloose/nerdcommenter'
+" Show marks when accessing
+Plugin 'Yilin-Yang/vim-markbar'
 "------------SYNTAX
 " Nagios
 Bundle 'vim-scripts/nagios-syntax'
@@ -269,6 +271,8 @@ au BufRead,BufNewFile *.tmpl set filetype=jinja
 let g:ale_completion_enabled = 1
 " Always show sign gutter
 let g:ale_sign_column_always = 1
+" Don't highlight errors (messes with syntax highlighting)
+let g:ale_set_highlights = 0
 
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
@@ -282,6 +286,10 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDCommentWholeLinesInVMode = 1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
+
+" Markbar
+let g:markbar_marks_to_display = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let g:markbar_peekaboo_marks_to_display = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 "---------------------------------
 " Keybindings
