@@ -274,6 +274,8 @@ let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
 " Don't highlight errors (messes with syntax highlighting)
 let g:ale_set_highlights = 0
+" Enable more linters
+let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
 
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
