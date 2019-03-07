@@ -276,7 +276,6 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 " Enable more linters
 let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
-
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
 let g:ctrlp_mruf_relative = 1
@@ -398,6 +397,11 @@ map <Leader>pp :setlocal paste!<cr>
 " Toggle Line Numbers
 map <Leader>nn :set number! <bar> :set relativenumber!<CR>
 "map <Leader>nn :set number!<CR>
+
+"----------------- Signs
+sign define mefsign text=M> linehl=Search texthl=Search
+map <Leader>ss :exec 'sign place '.line(".").'  name=mefsign line='.line(".")<CR>
+map <Leader>ds :exec 'sign unplace '.line(".")<CR>
 
 "-------------------Amazing Transfer
 " Transfers line to another vim via a file
