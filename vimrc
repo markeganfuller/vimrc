@@ -147,6 +147,9 @@ set title " Set title of term window
 set showmode
 set showcmd
 
+" List tab completions and cycle
+set wildmenu
+
 " Autoclose quickfix if last window
 au BufEnter * call MyLastWindow()
 function! MyLastWindow()
