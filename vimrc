@@ -109,7 +109,7 @@ set shell=bash " Set Shell
 set history=700 " Set history size
 set autoread " Auto read a file when its changed
 set visualbell " Visual Bell only
-set modelines=5 " Fixes OSX not reading modelines
+set nomodeline " Disable modeline
 set backspace=2 " Improve backspace
 
 set undofile " Persistent undo history
