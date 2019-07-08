@@ -7,23 +7,23 @@ filetype off      " Turn Filetype off until plugins have been loaded
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Let Vundle manage Vundle
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 "---------------------------------
-" Vundle Bundles
+" Vundle Plugins
 "---------------------------------
 " Tabuliser for => in puppet etc
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 " Git Commands
-Bundle 'tpope/vim-fugitive.git'
+Plugin 'tpope/vim-fugitive.git'
 " Git Diff in Gutter
-Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 " Buffer Line
-Bundle 'bling/vim-bufferline'
+Plugin 'bling/vim-bufferline'
 " CTRL P
-Bundle 'ctrlpvim/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " ALE syntax checking
-Bundle 'w0rp/ale'
+Plugin 'w0rp/ale'
 " Python indentation
 Plugin 'hynek/vim-python-pep8-indent'
 " Show registers when accessing
@@ -32,34 +32,36 @@ Plugin 'junegunn/vim-peekaboo'
 Plugin 'scrooloose/nerdcommenter'
 " Show marks when accessing
 Plugin 'Yilin-Yang/vim-markbar'
+" Auto toggle relative / absolute numbers
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 "------------SYNTAX
 " Nagios
-Bundle 'vim-scripts/nagios-syntax'
+Plugin 'vim-scripts/nagios-syntax'
 " Nginx
-Bundle 'nginx.vim'
+Plugin 'nginx.vim'
 " Puppet
-Bundle 'rodjek/vim-puppet'
+Plugin 'rodjek/vim-puppet'
 " MediaWiki
-Bundle 'wikipedia.vim'
+Plugin 'wikipedia.vim'
 " Salt
-Bundle 'saltstack/salt-vim'
+Plugin 'saltstack/salt-vim'
 " TWiki
-Bundle 'vim-scripts/TWiki-Syntax'
+Plugin 'vim-scripts/TWiki-Syntax'
 " Singularity
-Bundle 'singularityware/singularity.lang', {'rtp': 'vim/'}
+Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
 " Jenkinsfile
-Bundle 'martinda/Jenkinsfile-vim-syntax'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 " Jinja
-Bundle 'Glench/Vim-Jinja2-Syntax'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 " Toml
-Bundle 'cespare/vim-toml'
+Plugin 'cespare/vim-toml'
 " Ansible
-Bundle 'pearofducks/ansible-vim'
+Plugin 'pearofducks/ansible-vim'
 " Bytemark Custodian
-Bundle 'user4574/custodian-syntax'
+Plugin 'user4574/custodian-syntax'
 "------------COLOURSCHEME
 " Apprentice Colorscheme
-Bundle 'romainl/apprentice'
+Plugin 'romainl/apprentice'
 "---------------------------------
 call vundle#end()
 filetype plugin indent on " Enable filetype plugins
