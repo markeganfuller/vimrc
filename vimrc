@@ -60,8 +60,8 @@ Plugin 'pearofducks/ansible-vim'
 " Bytemark Custodian
 Plugin 'user4574/custodian-syntax'
 "------------COLOURSCHEME
-" Apprentice Colorscheme
-Plugin 'romainl/apprentice'
+" Journeyman Colorscheme
+Plugin 'markeganfuller/vim-journeyman'
 "---------------------------------
 call vundle#end()
 filetype plugin indent on " Enable filetype plugins
@@ -75,7 +75,7 @@ filetype plugin indent on " Enable filetype plugins
 if $TERM !=# 'linux'
     try
         set t_Co=256
-        colorscheme apprentice
+        colorscheme journeyman
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
         set background=dark
@@ -85,24 +85,6 @@ else
 endif
 
 syntax on " Turn syntax highlighting on
-
-"---------------------------------
-" Colour Scheme Tweaks
-"---------------------------------
-
-" Set line number and sign coloum to have normal bg
-highlight LineNr ctermbg=NONE guibg=NONE
-highlight SignColumn ctermbg=NONE guibg=NONE
-highlight CursorLine ctermbg=236 ctermfg=NONE guibg=NONE
-" Set current line number to have cursor column background
-highlight CursorLineNr ctermbg=236
-" Status Line
-highlight StatusLine ctermfg=16 guifg=#000000
-highlight StatusLineNC ctermfg=16 guifg=#000000
-" Set Colour for column highlighting
-highlight ColorColumn ctermbg=16 guibg=#000000
-" Set Highlight for search
-highlight Search ctermbg=186 ctermfg=235
 
 "---------------------------------
 " Editor Settings
