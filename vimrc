@@ -134,6 +134,9 @@ set showcmd
 " List tab completions and cycle
 set wildmenu
 
+" Configure diff to use indent-heuristic and patience
+set diffopt+=indent-heuristic,algorithm:patience
+
 " Autoclose quickfix if last window
 au BufEnter * call MyLastWindow()
 function! MyLastWindow()
