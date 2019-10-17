@@ -59,6 +59,8 @@ Plugin 'cespare/vim-toml'
 Plugin 'pearofducks/ansible-vim'
 " Bytemark Custodian
 Plugin 'user4574/custodian-syntax'
+" Jade / Pug HTML templating
+Plugin 'digitaltoad/vim-pug'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
@@ -270,7 +272,9 @@ let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_custom_ignore= 'vendor\|env'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': 'vendor$\|env$',
+    \ }
 
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 0
