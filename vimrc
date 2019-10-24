@@ -158,6 +158,9 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Diff Buffer against file
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
+" SQL Formatting, requires python-sqlparse
+command -range SQLFormat <line1>,<line2>!sqlformat - --indent_width 4 --indent_columns --wrap_after 79 --keywords upper
+
 " Store swap files in fixed location, not current directory.
 if !empty($HOME)
     if !isdirectory($HOME . '/.vimswap')
