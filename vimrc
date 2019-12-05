@@ -359,6 +359,9 @@ nmap <Leader>ft :%s/\t/    /g<CR>
 " Insert a Space
 nmap <Leader><Space> :normal i <ESC>
 
+" Insert a newline
+nmap <Leader><Space><Space> :normal o<ESC>
+
 " Comment line (Nerdcommenter)
 nmap <Leader># <plug>NERDCommenterToggle
 vmap <leader># <plug>NERDCommenterToggle gv
