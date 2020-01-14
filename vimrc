@@ -237,6 +237,7 @@ set shiftwidth=4 "Indent size for autoindent
 " Use 2 space indent for certain filetypes
 au FileType ruby setlocal shiftwidth=2 softtabstop=2
 au FileType yaml setlocal shiftwidth=2 softtabstop=2
+au FileType pug setlocal shiftwidth=2 softtabstop=2
 
 " Use Bash Higlighting not sh
 let g:is_bash = 1
