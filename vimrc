@@ -94,7 +94,7 @@ syntax on " Turn syntax highlighting on
 set shell=bash " Set Shell
 set history=700 " Set history size
 set autoread " Auto read a file when its changed
-set visualbell " Visual Bell only
+set belloff=all " No bells
 set nomodeline " Disable modeline
 set backspace=2 " Improve backspace
 
