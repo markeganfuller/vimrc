@@ -184,6 +184,18 @@ function! DeleteTrailingWhitespace()
     call setpos('.', save_pos)
 endfunction
 
+function ToggleCopyMode()
+    if &scl == 'no'
+        set scl=auto
+        set number!
+        set relativenumber!
+    else
+        set scl=no
+        set number!
+        set relativenumber!
+    endif
+endfunction
+
 "---------------------------------
 " Set Status Line
 "---------------------------------
@@ -399,6 +411,7 @@ map <Leader>pp :setlocal paste!<cr>
 map <Leader>nn :set number! <bar> :set relativenumber!<CR>
 "map <Leader>nn :set number!<CR>
 
+map <Leader>pc :call ToggleCopyMode()<CR>
 "----------------- Signs
 sign define mefsign text=M> linehl=Search texthl=Search
 map <Leader>ss :exec 'sign place '.line(".").'  name=mefsign line='.line(".")<CR>
