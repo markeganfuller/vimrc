@@ -1,4 +1,3 @@
-set nocompatible  " Turn off compatiblity mode
 filetype off      " Turn Filetype off until plugins have been loaded
 
 "---------------------------------
@@ -193,7 +192,7 @@ function! DeleteTrailingWhitespace()
 endfunction
 
 function ToggleCopyMode()
-    if &scl == 'no'
+    if &scl ==? 'no'
         set scl=auto
         set number!
         set relativenumber!
