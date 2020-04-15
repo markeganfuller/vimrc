@@ -418,11 +418,12 @@ map <Leader>sp :setlocal spell!<cr>
 " Toggle Paste Mode
 map <Leader>pp :setlocal paste!<cr>
 
+" Toggle Copy Mode (hide all except content)
+map <Leader>pc :call ToggleCopyMode()<CR>
+
 " Toggle Line Numbers
 map <Leader>nn :set number! <bar> :set relativenumber!<CR>
-"map <Leader>nn :set number!<CR>
 
-map <Leader>pc :call ToggleCopyMode()<CR>
 "----------------- Signs
 sign define mefsign text=M> linehl=Search texthl=Search
 map <Leader>ss :exec 'sign place '.line(".").'  name=mefsign line='.line(".")<CR>
