@@ -196,6 +196,9 @@ function ToggleCopyMode()
     endif
 endfunction
 
+" Auto resize windows (equalise) on vim resize
+autocmd vimrc VimResized * wincmd =
+
 "---------------------------------
 " Set Status Line
 "---------------------------------
