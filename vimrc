@@ -89,6 +89,14 @@ endif
 syntax on " Turn syntax highlighting on
 
 "---------------------------------
+" Setup augroup
+"---------------------------------
+augroup vimrc
+    " Clean any previous load
+    autocmd!
+augroup END
+
+"---------------------------------
 " Editor Settings
 "---------------------------------
 set shell=bash " Set Shell
@@ -140,7 +148,7 @@ set wildmenu
 set diffopt+=indent-heuristic,algorithm:patience
 
 " Autoclose quickfix if last window
-au BufEnter * call MyLastWindow()
+autocmd vimrc BufEnter * call MyLastWindow()
 function! MyLastWindow()
   " if the window is quickfix go on
   if &buftype ==? 'quickfix'
@@ -152,8 +160,8 @@ function! MyLastWindow()
 endfunction
 
 " Autoclose Scratch
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd vimrc CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd vimrc InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Diff Buffer against file
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
@@ -170,13 +178,13 @@ if !empty($HOME)
 endif
 
 " Return to last edit position when opening files
-autocmd BufReadPost *
+autocmd vimrc BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
 
 " Delete trailing whitespace on save
-autocmd BufWritePre * :call DeleteTrailingWhitespace()
+autocmd vimrc BufWritePre * :call DeleteTrailingWhitespace()
 
 function! DeleteTrailingWhitespace()
     let save_pos = getpos('.')
@@ -250,9 +258,9 @@ set softtabstop=4 "Number of spaces that a <Tab> counts for when inserting
 set shiftwidth=4 "Indent size for autoindent
 
 " Use 2 space indent for certain filetypes
-au FileType ruby setlocal shiftwidth=2 softtabstop=2
-au FileType yaml setlocal shiftwidth=2 softtabstop=2
-au FileType pug setlocal shiftwidth=2 softtabstop=2
+autocmd vimrc FileType ruby setlocal shiftwidth=2 softtabstop=2
+autocmd vimrc FileType yaml setlocal shiftwidth=2 softtabstop=2
+autocmd vimrc FileType pug setlocal shiftwidth=2 softtabstop=2
 
 " Use Bash Higlighting not sh
 let g:is_bash = 1
@@ -260,19 +268,19 @@ let g:is_bash = 1
 "---------------------------------
 " File Syntax Settings
 "---------------------------------
-au BufRead,BufNewFile audit.rules set filetype=sh
-au BufRead,BufNewFile auditd.rules set filetype=sh
-au BufRead,BufNewFile *.eyaml set filetype=yaml
-au BufRead,BufNewFile eyaml_edit* set filetype=yaml
-au BufRead,BufNewFile *.md set filetype=markdown
+autocmd vimrc BufRead,BufNewFile audit.rules set filetype=sh
+autocmd vimrc BufRead,BufNewFile auditd.rules set filetype=sh
+autocmd vimrc BufRead,BufNewFile *.eyaml set filetype=yaml
+autocmd vimrc BufRead,BufNewFile eyaml_edit* set filetype=yaml
+autocmd vimrc BufRead,BufNewFile *.md set filetype=markdown
 " Use tcl for module files
-au BufRead,BufNewFile *
+autocmd vimrc BufRead,BufNewFile *
     \ if getline(1) =~ '^#%Module' |
     \   set filetype=tcl |
     \ endif
-au BufRead,BufNewFile *.twiki set filetype=twiki
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
-au BufRead,BufNewFile *.tmpl set filetype=jinja
+autocmd vimrc BufRead,BufNewFile *.twiki set filetype=twiki
+autocmd vimrc BufRead,BufNewFile Vagrantfile set filetype=ruby
+autocmd vimrc BufRead,BufNewFile *.tmpl set filetype=jinja
 
 "---------------------------------
 " Plugin Settings
