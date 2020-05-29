@@ -301,6 +301,18 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = {
     \ 'dir': 'vendor$\|env$',
     \ }
+" CtrlP - Don't index home
+" https://github.com/kien/ctrlp.vim/issues/560#issuecomment-168463350
+augroup vimrc
+    autocmd VimEnter * nnoremap <C-P> :call RunCtrlP()<CR>
+augroup END
+fun! RunCtrlP()
+    if (getcwd() == $HOME)
+        echo 'Not running CtrlP in $HOME'
+        return
+    endif
+    execute g:ctrlp_cmd
+endfunc
 
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 0
