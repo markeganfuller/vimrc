@@ -33,6 +33,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Yilin-Yang/vim-markbar'
 " Auto toggle relative / absolute numbers
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+" Vader vimscript testing
+Plugin 'junegunn/vader.vim'
 "------------SYNTAX
 " Nagios
 Plugin 'vim-scripts/nagios-syntax'
@@ -60,6 +62,8 @@ Plugin 'pearofducks/ansible-vim'
 Plugin 'user4574/custodian-syntax'
 " Jade / Pug HTML templating
 Plugin 'digitaltoad/vim-pug'
+" YARA
+Plugin 'yaunj/vim-yara'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
