@@ -303,6 +303,9 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 " Enable more linters
 let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
+" Set jump keybinding for ALE
+map <Leader>aa :ALENext<cr>
+
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
 let g:ctrlp_mruf_relative = 1
