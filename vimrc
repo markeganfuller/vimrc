@@ -108,6 +108,8 @@ set autoread " Auto read a file when its changed
 set belloff=all " No bells
 set nomodeline " Disable modeline
 set backspace=2 " Improve backspace
+" Define non printable character display
+set listchars=eol:$,tab:⇥·,extends:>,precedes:<,space:␣
 
 set undofile " Persistent undo history
 " Store undo files in fixed location, not current directory.
@@ -190,9 +192,12 @@ autocmd vimrc BufReadPost *
 autocmd vimrc BufWritePre * :call DeleteTrailingWhitespace()
 
 function! DeleteTrailingWhitespace()
-    let save_pos = getpos('.')
-    %s/\s\+$//e
-    call setpos('.', save_pos)
+    " Don't do it for diff files (patches etc)
+    if (&filetype!=?'diff')
+        let view = winsaveview()
+        %s/\s\+$//e
+        call winrestview(view)
+    endif
 endfunction
 
 function ToggleCopyMode()
@@ -438,6 +443,9 @@ map <Leader>pc :call ToggleCopyMode()<CR>
 
 " Toggle Line Numbers
 map <Leader>nn :set number! <bar> :set relativenumber!<CR>
+
+" Toggle listchars (non-printable chars)
+map <leader>lc :set list!<CR>
 
 "----------------- Signs
 sign define mefsign text=M> linehl=Search texthl=Search
