@@ -64,6 +64,8 @@ Plugin 'user4574/custodian-syntax'
 Plugin 'digitaltoad/vim-pug'
 " YARA
 Plugin 'yaunj/vim-yara'
+" Handling for Heredocs in shell scripts
+Plugin 'markeganfuller/vim-heredoc'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
@@ -272,6 +274,11 @@ autocmd vimrc FileType pug setlocal shiftwidth=2 softtabstop=2
 
 " Use Bash Higlighting not sh
 let g:is_bash = 1
+" Make syntax calculation start 500 lines before
+" Avoids issues with temporarily broken highlighting
+let g:sh_minlines = 500
+" Enable syntax highlighting in heredocs
+let g:heredoc_matches = [['SHELL', 'sh'], ['PYTHON', 'python']]
 
 "---------------------------------
 " File Syntax Settings
