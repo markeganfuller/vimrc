@@ -112,7 +112,8 @@ set nomodeline " Disable modeline
 set backspace=2 " Improve backspace
 " Define non printable character display
 set listchars=eol:$,tab:⇥·,extends:>,precedes:<,space:␣
-
+" Make vertical splits use space char not |
+set fillchars+=vert:\  "Significant whitespace
 set undofile " Persistent undo history
 " Store undo files in fixed location, not current directory.
 if !empty($HOME)
