@@ -156,6 +156,9 @@ set wildmenu
 " Configure diff to use indent-heuristic and patience
 set diffopt+=indent-heuristic,algorithm:patience
 
+" Disable folds
+set nofoldenable
+
 " Autoclose quickfix if last window
 autocmd vimrc BufEnter * call MyLastWindow()
 function! MyLastWindow()
