@@ -72,6 +72,7 @@ Plugin 'markeganfuller/vim-journeyman'
 "---------------------------------
 call vundle#end()
 filetype plugin indent on " Enable filetype plugins
+set viminfo+=! " Save and restore uppercase global vars
 
 "---------------------------------
 " Colour Scheme Setup
