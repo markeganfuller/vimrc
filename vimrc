@@ -240,6 +240,18 @@ function! LinterStatus() abort
     \)
 endfunction
 
+"Get git top level directory (so we can get local repo name)
+"Useful for when we have multiple check outs of the same repo with differnt
+"names locally
+function! GitTopLevelStatus() abort
+    :silent let l:git_top_level = trim(system("git rev-parse --show-toplevel 2>/dev/null"))
+    if strlen(l:git_top_level)
+        return '[' . fnamemodify(l:git_top_level, ':t') . ']'
+    else
+        return ''
+    endif
+endfunction
+
 set statusline=
 " Column, Line, Total line count
 set statusline+=\ %c:%l[%L]
@@ -247,6 +259,8 @@ set statusline+=\ %c:%l[%L]
 set statusline+=[%{&syntax}]%{LinterStatus()}
 " Git status
 set statusline+=%{FugitiveStatusline()}
+" Local Repo name
+set statusline+=%{GitTopLevelStatus()}
 " Read only flag and modified flag
 set statusline+=%r%m%<
 " Left / right separator
