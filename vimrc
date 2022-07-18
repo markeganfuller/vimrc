@@ -339,6 +339,10 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = {
     \ 'dir': 'vendor$\|env$',
     \ }
+
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=1000
+
 " CtrlP - Don't index home
 " https://github.com/kien/ctrlp.vim/issues/560#issuecomment-168463350
 augroup vimrc
