@@ -35,6 +35,8 @@ Plugin 'Yilin-Yang/vim-markbar'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 " Vader vimscript testing
 Plugin 'junegunn/vader.vim'
+" Vim Github Link
+Plugin 'knsh14/vim-github-link'
 "------------SYNTAX
 " Nagios
 Plugin 'vim-scripts/nagios-syntax'
@@ -158,6 +160,11 @@ set diffopt+=indent-heuristic,algorithm:patience
 
 " Disable folds
 set nofoldenable
+
+" Map Leader
+" mapped to ,
+let mapleader = ','
+let g:mapleader = ','
 
 " Autoclose quickfix if last window
 autocmd vimrc BufEnter * call MyLastWindow()
@@ -330,7 +337,7 @@ let g:ale_set_highlights = 0
 " Enable more linters
 let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
 " Set jump keybinding for ALE
-map <Leader>aa :ALENext<cr>
+map <Leader>aa :ALENext<CR>
 
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
@@ -367,14 +374,12 @@ let g:NERDDefaultAlign = 'left'
 let g:markbar_marks_to_display = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:markbar_peekaboo_marks_to_display = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+" Github Link
+map <Leader>gl :GetCommitLink<CR>
+
 "---------------------------------
 " Keybindings
 "---------------------------------
-" Map Leader
-" mapped to ,
-let mapleader = ','
-let g:mapleader = ','
-
 " Generate tags
 map <Leader>gt :!ctags -R<CR>
 
