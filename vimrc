@@ -347,8 +347,9 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': 'vendor$\|env$',
     \ }
 
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=1000
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 1000
+let g:ctrlp_clean_cache_on_exit = 0
 
 " CtrlP - Don't index home
 " https://github.com/kien/ctrlp.vim/issues/560#issuecomment-168463350
