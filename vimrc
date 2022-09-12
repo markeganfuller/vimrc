@@ -336,6 +336,7 @@ let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
 " Enable more linters
 let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
+let g:ale_fixers = {'ruby': ['rubocop']}
 " Set jump keybinding for ALE
 map <Leader>aa :ALENext<CR>
 
