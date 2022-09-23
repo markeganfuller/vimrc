@@ -68,6 +68,8 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'yaunj/vim-yara'
 " Handling for Heredocs in shell scripts
 Plugin 'markeganfuller/vim-heredoc'
+" Github Actions Yaml
+Plugin 'yasuhiroki/github-actions-yaml.vim'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
