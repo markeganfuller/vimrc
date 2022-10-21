@@ -350,6 +350,7 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': 'vendor$\|env$',
     \ }
 
+let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 1000
 let g:ctrlp_clean_cache_on_exit = 0
