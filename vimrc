@@ -347,7 +347,7 @@ let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = {
-    \ 'dir': 'vendor$\|env$',
+    \ 'dir': 'vendor$\|env$\|.git$',
     \ }
 
 let g:ctrlp_show_hidden=1
