@@ -355,6 +355,11 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 1000
 let g:ctrlp_clean_cache_on_exit = 0
 
+" Override CtrlPMixed keybind as that's our default
+" Instead make it only use current dir, useful when we're in a big git repo
+" (like a puppet control repo with all the modules in it)
+map <c-u> :let g:ctrlp_working_path_mode = 'a' \| CtrlPMixed \| let g:ctrlp_working_path_mode = 'ra'<CR>
+
 " CtrlP - Don't index home
 " https://github.com/kien/ctrlp.vim/issues/560#issuecomment-168463350
 augroup vimrc
