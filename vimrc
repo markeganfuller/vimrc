@@ -355,10 +355,9 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 1000
 let g:ctrlp_clean_cache_on_exit = 0
 
-" Override CtrlPMixed keybind as that's our default
-" Instead make it only use current dir, useful when we're in a big git repo
-" (like a puppet control repo with all the modules in it)
-map <c-u> :let g:ctrlp_working_path_mode = 'a' \| CtrlPMixed \| let g:ctrlp_working_path_mode = 'ra'<CR>
+" Run CtrlP in current dir only, useful when we're in a big git repo (like a
+" puppet control repo with all the modules in it)
+map <Leader>p :let g:ctrlp_working_path_mode = 'a' \| CtrlPMixed \| let g:ctrlp_working_path_mode = 'ra'<CR>
 
 " CtrlP - Don't index home
 " https://github.com/kien/ctrlp.vim/issues/560#issuecomment-168463350
@@ -427,8 +426,8 @@ nnoremap # *
 nnoremap * #
 
 " Fix CTRL-o/i direction (move in jump list)
-nnoremap <C-o> <C-i>
-nnoremap <C-i> <C-o>
+nnoremap <c-o> <c-i>
+nnoremap <c-i> <c-o>
 
 " Remap [I Show all lines containing string
 nmap <Leader>qq [I
@@ -456,7 +455,7 @@ nmap <Leader><Space><Space> :normal o<ESC>
 
 " Comment line (Nerdcommenter)
 nmap <Leader># <plug>NERDCommenterToggle
-vmap <leader># <plug>NERDCommenterToggle gv
+vmap <Leader># <plug>NERDCommenterToggle gv
 
 " Colour Columns 80+
 nmap <Leader>cc :execute "set colorcolumn=" . join(range(80,335), ',')<CR>
