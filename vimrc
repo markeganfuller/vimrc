@@ -62,7 +62,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'pearofducks/ansible-vim'
 " Bytemark Custodian
 Plugin 'user4574/custodian-syntax'
-" Jade / Pug HTML templating
+" Pug HTML templating (formerly known as Jade)
 Plugin 'digitaltoad/vim-pug'
 " YARA
 Plugin 'yaunj/vim-yara'
@@ -298,7 +298,7 @@ set shiftwidth=4 "Indent size for autoindent
 " Use 2 space indent for certain filetypes
 autocmd vimrc FileType ruby setlocal shiftwidth=2 softtabstop=2
 autocmd vimrc FileType yaml setlocal shiftwidth=2 softtabstop=2
-autocmd vimrc FileType pug setlocal shiftwidth=2 softtabstop=2
+autocmd vimrc FileType pug setlocal shiftwidth=2 softtabstop=2 "Formally known as Jade
 
 " Use Bash Higlighting not sh
 let g:is_bash = 1
