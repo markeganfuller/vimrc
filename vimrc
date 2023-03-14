@@ -276,10 +276,8 @@ set statusline+=%{GitTopLevelStatus()}
 set statusline+=%r%m%<
 " Left / right separator
 set statusline+=%=
-" user@host
-set statusline+=%{$USER}@%{hostname()}
 " File name
-set statusline+=\ %.30F
+set statusline+=\ %F
 set statusline+=\ |
 
 "---------------------------------
