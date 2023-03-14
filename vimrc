@@ -70,6 +70,8 @@ Plugin 'yaunj/vim-yara'
 Plugin 'markeganfuller/vim-heredoc'
 " Github Actions Yaml
 Plugin 'yasuhiroki/github-actions-yaml.vim'
+" Terraform
+Plugin 'hashivim/vim-terraform'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
