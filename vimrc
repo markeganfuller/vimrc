@@ -478,6 +478,10 @@ map <Leader>mt :match Error /\t/<cr>
 " Match Whitespace and show as errors
 map <Leader>mw :match Error /\s\+/<cr>
 
+" Match non breaking spaces and show as errors
+" Commonly seen when copy pasting from confluence
+map <Leader>ms :match Error /\%u00a0\+/<cr>
+
 " Clear Matches
 map <Leader>mn :match NONE<cr>
 
