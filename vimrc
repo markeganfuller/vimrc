@@ -141,6 +141,8 @@ set relativenumber " Turn on relative line numbers
 set incsearch " Search as you type
 set hlsearch " Highlight search
 set wrapscan " Wrap searches
+set ignorecase " Case insensitive search
+set smartcase " Case sensitive if upper case in search term
 
 " Set splits to appear below or right
 set splitbelow
