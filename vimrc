@@ -72,6 +72,8 @@ Plugin 'markeganfuller/vim-heredoc'
 Plugin 'yasuhiroki/github-actions-yaml.vim'
 " Terraform
 Plugin 'hashivim/vim-terraform'
+" Dockerfile
+Plugin 'ekalinin/Dockerfile.vim'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
