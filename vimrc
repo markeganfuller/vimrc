@@ -196,6 +196,9 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | di
 " SQL Formatting, requires python-sqlparse
 command -range SQLFormat <line1>,<line2>!sqlformat - --indent_width 4 --indent_columns --wrap_after 79 --keywords upper
 
+" Tabularize single space delimiter to min 1 space
+command -range TabSingleSpace <line1>,<line2>Tabularize /\s\+/l0
+
 " Store swap files in fixed location, not current directory.
 if !empty($HOME)
     if !isdirectory($HOME . '/.vimswap')
