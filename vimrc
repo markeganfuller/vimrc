@@ -74,6 +74,8 @@ Plugin 'yasuhiroki/github-actions-yaml.vim'
 Plugin 'hashivim/vim-terraform'
 " Dockerfile
 Plugin 'ekalinin/Dockerfile.vim'
+" Mikrotik RouterOS
+Plugin 'krcs/vim-routeros-syntax'
 "------------COLOURSCHEME
 " Journeyman Colorscheme
 Plugin 'markeganfuller/vim-journeyman'
