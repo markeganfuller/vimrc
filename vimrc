@@ -77,8 +77,8 @@ Plugin 'ekalinin/Dockerfile.vim'
 " Mikrotik RouterOS
 Plugin 'krcs/vim-routeros-syntax'
 "------------COLOURSCHEME
-" Journeyman Colorscheme
-Plugin 'markeganfuller/vim-journeyman'
+" Apprentic Colorscheme
+Plugin 'romainl/Apprentice'
 "---------------------------------
 call vundle#end()
 filetype plugin indent on " Enable filetype plugins
@@ -93,7 +93,36 @@ set viminfo+=! " Save and restore uppercase global vars
 if $TERM !=# 'linux'
     try
         set t_Co=256
-        colorscheme journeyman
+        colorscheme apprentice
+
+        function! MyApprenticeOverrides() abort
+            " Make line numbers and sign background match rest of window
+            highlight LineNr ctermbg=NONE guibg=NONE
+            highlight signColumn ctermbg=NONE guibg=NONE
+            "  Make NonText and SpecialKey stand out
+            highlight NonText ctermfg=magenta guifg=#8787af
+            highlight SpecialKey ctermfg=magenta guifg=#8787af
+            " Make search less bright
+            highlight Search ctermfg=234 guifg=#1c1c1c ctermbg=186 guibg=#d7d787
+            " Make comments brighter
+            highlight Comment ctermfg=242 guifg=#6c6c6c
+            " Inverted statusline for inactive split.
+            highlight StatusLine ctermfg=234 guifg=#1c1c1c
+            highlight StatusLineNC ctermbg=234 guibg=#1c1c1c
+            " Adjust MatchParen for easier visibility.
+            highlight MatchParen ctermbg=NONE guibg=NONE ctermfg=magenta guifg=#8787af
+            " Traditional diff colours
+            highlight DiffAdd ctermbg=235 ctermfg=108 cterm=reverse guibg=#262626 guifg=#87af87 gui=reverse
+            highlight DiffChange ctermbg=235 ctermfg=103 cterm=reverse guibg=#262626 guifg=#8787af gui=reverse
+            highlight DiffDelete ctermbg=235 ctermfg=131 cterm=reverse guibg=#262626 guifg=#af5f5f gui=reverse
+            highlight DiffText ctermbg=235 ctermfg=208 cterm=reverse guibg=#262626 guifg=#ff8700 gui=reverse
+        endfunction
+
+        augroup MyColors
+            autocmd!
+            autocmd colorscheme apprentice call MyApprenticeOverrides()
+        augroup END
+
     catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme pablo
         set background=dark
