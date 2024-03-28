@@ -193,6 +193,8 @@ set showcmd
 
 " List tab completions and cycle
 set wildmenu
+" Make the tab completion more shell-like
+set wildmode=longest:full,full
 
 " Configure diff to use indent-heuristic and patience
 set diffopt+=indent-heuristic,algorithm:patience
