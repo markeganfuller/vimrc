@@ -422,6 +422,9 @@ let g:NERDDefaultAlign = 'left'
 " Markbar
 let g:markbar_marks_to_display = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:markbar_peekaboo_marks_to_display = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+" Using hidden buffers is faster but explodes if you have multiple instances
+" of vim
+let g:markbar_cache_with_hidden_buffers = v:false
 
 " Github Link
 map <Leader>gl :GetCommitLink<CR>
