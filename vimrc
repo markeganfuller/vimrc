@@ -381,6 +381,8 @@ let g:ale_linters = {'python': ['pydocstyle', 'pylint', 'flake8']}
 let g:ale_fixers = {'ruby': ['rubocop']}
 " Set jump keybinding for ALE
 map <Leader>aa :ALENext<CR>
+" Disable virtualtext (inline error messages)
+let g:ale_virtualtext_cursor = 'disabled'
 
 " CtrlP
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
