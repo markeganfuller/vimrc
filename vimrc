@@ -388,8 +388,9 @@ let g:ale_virtualtext_cursor = 'disabled'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed']
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
+" Warning this is vim regex, its weird \| is a pattern delimiter here
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '^vendor$\|^env$\|^\.git$\|^\.terraform$\|^coverage$',
+    \ 'dir': 'vendor$\|env$\|\.git$\|\.terraform$\|coverage$',
     \ }
 
 let g:ctrlp_show_hidden=1
