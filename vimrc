@@ -155,12 +155,9 @@ set listchars=eol:$,tab:⇥·,extends:>,precedes:<,space:␣
 " Make vertical splits use space char not |
 set fillchars+=vert:\  "Significant whitespace
 set undofile " Persistent undo history
+set backup " Backup when writing a file
 " Store undo files in fixed location, not current directory.
 if !empty($HOME)
-    if !isdirectory($HOME . '/.vimundo')
-        call mkdir($HOME . '/.vimundo')
-    endif
-    set undodir=~/.vimundo
 endif
 
 set autoindent " Follow last lines indent
@@ -232,12 +229,22 @@ command -range SQLFormat <line1>,<line2>!sqlformat - --indent_width 4 --indent_c
 " Tabularize single space delimiter to min 1 space
 command -range TabSingleSpace <line1>,<line2>Tabularize /\s\+/l0
 
-" Store swap files in fixed location, not current directory.
+" Store swap/backup/undo files in fixed location, not current directory.
 if !empty($HOME)
     if !isdirectory($HOME . '/.vimswap')
         call mkdir($HOME . '/.vimswap')
     endif
     set directory=~/.vimswap//
+
+    if !isdirectory($HOME . '/.vimbackup')
+        call mkdir($HOME . '/.vimbackup')
+    endif
+    set backupdir=~/.vimbackup//
+
+    if !isdirectory($HOME . '/.vimundo')
+        call mkdir($HOME . '/.vimundo')
+    endif
+    set undodir=~/.vimundo
 endif
 
 " Return to last edit position when opening files
@@ -248,6 +255,10 @@ autocmd vimrc BufReadPost *
 
 " Delete trailing whitespace on save
 autocmd vimrc BufWritePre * :call DeleteTrailingWhitespace()
+" Add timestamp to backup file name
+autocmd vimrc BufWritePre * let &backupext = '~' . strftime('%FT%T%z')
+" Clean up old backups on exit
+autocmd vimrc VimLeave * :call system('find ~/.vimbackup -mtime +14 -delete')
 
 function! DeleteTrailingWhitespace()
     " Don't do it for diff files (patches etc)
